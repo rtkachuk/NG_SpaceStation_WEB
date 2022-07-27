@@ -1,4 +1,5 @@
-let socket = new WebSocket("ws://127.0.0.1:8081");
+let socket = new WebSocket("ws://192.168.0.112:8081");
+let ID = ""
 
 socket.onopen = function (e) {
   //alert("[open] Connection established");
@@ -9,7 +10,15 @@ socket.onmessage = function (event) {
   if (msg.includes("MOVE")) {
     console.log(msg);
     pos = msg.split(/\s+/);
-    updatePlayerPos(pos[1], pos[2])
+    updatePlayerPos(pos[0], pos[2], pos[3]) // ID, x, y
+  }
+  if (msg.includes("ID")) {
+    ID = msg.split(/\s+/)[1];
+    console.log("ID: " + ID);
+  }
+  if (msg.includes("KICK")) {
+    player = msg.split(/\s+/)[1]
+
   }
 };
 

@@ -1,5 +1,7 @@
 let cSize = 40;
 
+var players = {}
+
 var floor = new Image();
 floor.src = './images/floor.png';
 
@@ -7,7 +9,6 @@ var playerModel = new Image();
 playerModel.src = './images/player.png';
 
 function start() {
-    player = new component(50, 50, "red");
     map.start();
     initMap();
 }
@@ -16,7 +17,6 @@ var map = {
     canvas: document.getElementById("myCanvas"),
     start: function() {
         this.context = this.canvas.getContext("2d");
-        //this.interval = setInterval(updateArea, 100);
     },
     clear: function() {
         this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
@@ -56,8 +56,24 @@ function component (x ,y, color) {
     }
 }
 
-function updatePlayerPos(x, y) {
+function updatePlayerPos(id, x, y) {
+    console.log("ID: " + id);
+    console.log("x: " + x);
+    console.log("y: " + y);
     map.clear();
+    if (players.hasOwnProperty(id) == false) {
+        players[id] = new component(50, 50, "red");
+    }
+    player = players[id];
     player.newPos(x*cSize, y*cSize);
     player.update();
+
+    for (const [key, value] of Object.entries(players)) {
+        value.update()
+        console.log("TEST")
+    }
+}
+
+function kick(id) {
+    delete players[id];
 }

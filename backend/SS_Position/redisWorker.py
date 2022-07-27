@@ -15,11 +15,10 @@ def getPlayerPostition(player):
 
 def ensureVariableExists(player):
     item = redis.get(player)
-    if redis.exists(player):
-        item = redis.get(player)
-    else:
-        item = "0 0"
-    return item.decode("utf8")
+    if not redis.exists(player):
+        redis.set(player, "0 0")
+    item = redis.get(player)
+    return str(item.decode("utf8"))
 
 def doPlayerMovement(player, direction):
 
