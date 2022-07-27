@@ -6,7 +6,7 @@ coreLog = configureLogger(name="CORE")
 def process(player, message):
     if "MOVE" in message:
         cmd, dir = message.split(" ")
-        return processMovement(player, dir)
+        return "MOVE " + processMovement(player, dir)
     return "ERROR"
 
 def processMovement(player, key):
