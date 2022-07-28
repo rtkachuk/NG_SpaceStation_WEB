@@ -37,11 +37,50 @@ function drawTile(id, x, y) {
     case "#":
       img = wall;
       break;
+    case "1":
+      img = floor1;
+      break;
+    case "2":
+      img = floor2;
+      break;
+    case "3":
+      img = floor3;
+      break;
+    case "4":
+      img = floor4;
+      break;
+    case "5":
+      img = floor5;
+      break;
+    case "6":
+      img = floor6;
+      break;
+    case "7":
+      img = floor7;
+      break;
+    case "8":
+      img = floor8;
+      break;
+    case "9":
+      img = floor9;
+      break;
+    case "@":
+      img = floor10;
+      break;
+    case "!":
+      img = floor11;
+      break;
     case "*":
       img = space1;
       break;
+    case "c":
+      img = doorClosed;
+      break;
+    case "o":
+      img = doorOpen;
     default:
-      img = floor; console.log(id);
+      img = floor;
+      console.log(id);
   }
   ctx.drawImage(img, x, y, cSize, cSize);
 }
@@ -58,7 +97,11 @@ function parseMap() {
 function initMap() {
   for (let y = 0; y < mapData.length; y++) {
     for (let x = 0; x < mapData[y].length; x++) {
-      drawTile(mapData[y][x], x * cSize + offsetX * cSize, y * cSize + offsetY * cSize);
+      drawTile(
+        mapData[y][x],
+        x * cSize + offsetX * cSize,
+        y * cSize + offsetY * cSize
+      );
     }
   }
 }
