@@ -11,28 +11,15 @@ redis = redis.Redis(
 )
 
 def getPlayerPostition(player):
-    return ensureVariableExists(player)
+    return ensurePositionExists(player)
 
-def ensureVariableExists(player):
+def ensurePositionExists(player):
     item = redis.get(player)
     if not redis.exists(player):
         redis.set(player, "0 0")
     item = redis.get(player)
-    return str(item.decode("utf8"))
+    x,y = str(item.decode("utf8")).split(" ")
+    return [ int(x), int(y) ]
 
-def doPlayerMovement(player, direction):
-
-    item = ensureVariableExists(player)
-
-    x,y = str(item).split(" ")
-    x = int(x)
-    y = int(y)
-
-    redisLog.debug("Moving " + player + " to " + direction)
-    match (direction):
-        case "W": y-=1
-        case "S": y+=1
-        case "A": x-=1
-        case "D": x+=1
+def setPlayerPosition(player, x, y):
     redis.set(player, str(x) + " " + str(y))
-    return getPlayerPostition(player)

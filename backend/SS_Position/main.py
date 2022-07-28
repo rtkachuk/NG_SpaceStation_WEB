@@ -7,6 +7,9 @@ from logWorker import configureLogger
 serverlog = configureLogger(name="SERVER")
 clients = []
 
+def start():
+    core.init("configs")
+
 async def root(websocket):
     try:
         clients.append(websocket)
@@ -17,8 +20,7 @@ async def root(websocket):
             message = await websocket.recv()
             command = core.process(player, message)
             for client in clients:
-                await client.send(player + " " + command);
-            #await websocket.send(core.process(player, message))
+                await client.send(player + " " + command)
     except websockets.exceptions.ConnectionClosed:
         serverlog.error ("Connection dropped")
         clients.remove(websocket)
@@ -29,4 +31,5 @@ async def main():
     async with websockets.serve(root, "0.0.0.0", 8081, logger=serverlog):
         await asyncio.Future()
 
+start()
 asyncio.run(main())
