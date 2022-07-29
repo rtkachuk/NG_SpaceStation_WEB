@@ -1,35 +1,40 @@
 import asyncio
+from turtle import position
 import websockets
 
-import core
+from threading import Thread
+import connectivityManager
 from logWorker import configureLogger
 
-serverlog = configureLogger(name="SERVER")
-clients = []
+posSockLog = configureLogger(name="positionSocket")
+mapSockLog = configureLogger(name="mapSocket")
+
+
+def positionWorker():
+    eventLoop_position = asyncio.new_event_loop()
+    asyncio.set_event_loop(eventLoop_position)
+    ws_server = websockets.serve(connectivityManager.positionSocketHandler, "0.0.0.0", 8081, logger=posSockLog)
+    eventLoop_position.run_until_complete(ws_server)
+    eventLoop_position.run_forever()
+    eventLoop_position.close()
+
+def mapSender():
+    eventLoop_map = asyncio.new_event_loop()
+    asyncio.set_event_loop(eventLoop_map)
+    ws_server = websockets.serve(connectivityManager.mapSenderHandler, "0.0.0.0", 8082, logger=mapSockLog)
+    eventLoop_map.run_until_complete(ws_server)
+    eventLoop_map.run_forever()
+    eventLoop_map.close()
 
 def start():
-    core.init("configs")
+    positionWorkerThread = Thread (target=positionWorker)
+    mapWorkerThread = Thread (target=mapSender)
 
-async def root(websocket):
-    try:
-        clients.append(websocket)
-        player = websocket.remote_address[0]
-        await websocket.send("ID " + player)
-        serverlog.info("New connection from " + player)
-        while True:
-            message = await websocket.recv()
-            command = core.process(player, message)
-            for client in clients:
-                await client.send(player + " " + command)
-    except websockets.exceptions.ConnectionClosed:
-        serverlog.error ("Connection dropped")
-        clients.remove(websocket)
-        for client in clients:
-            await client.send("KICK " + player)
+    positionWorkerThread.start()
+    mapWorkerThread.start()
 
-async def main():
-    async with websockets.serve(root, "0.0.0.0", 8081, logger=serverlog):
-        await asyncio.Future()
+    positionWorkerThread.join()
+    mapWorkerThread.join()
 
+connectivityManager.start()
 start()
-asyncio.run(main())

@@ -6,12 +6,13 @@ var offsetX = 0;
 var offsetY = 0;
 
 mapData = [];
-mapFile = "./configs/map.txt";
+//mapFile = "./configs/map.txt";
 
 function start() {
-  parseMap();
-  initMap();
+  //parseMap();
+  console.log(mapData);
   map.start();
+  //updateAll();
 }
 
 var map = {
@@ -23,12 +24,11 @@ var map = {
     this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
     initMap();
-    ctx.stroke();
+    this.context.stroke();
   },
 };
 
 function drawTile(id, x, y) {
-  ctx = map.context;
   img = null;
   switch (id) {
     case ".":
@@ -82,17 +82,17 @@ function drawTile(id, x, y) {
       img = floor;
       console.log(id);
   }
-  ctx.drawImage(img, x, y, cSize, cSize);
+  map.context.drawImage(img, x, y, cSize, cSize);
 }
 
-function parseMap() {
+/*function parseMap() {
   fetch(mapFile)
     .then((response) => response.text())
     .then((data) => {
       this.mapData = data.split(/\r?\n/);
       initMap();
     });
-}
+}*/
 
 function initMap() {
   for (let y = 0; y < mapData.length; y++) {
@@ -132,6 +132,7 @@ function updateAll() {
   for (const [key, value] of Object.entries(players)) {
     value.update();
   }
+  map.context.stroke();
 }
 
 function updatePlayerPos(id, x, y) {

@@ -10,3 +10,6 @@ def initMap(src):
 
 def checkPositionMovable(x, y):
     return map[y][x] == '.'
+
+def getCurrentMap():
+    return map

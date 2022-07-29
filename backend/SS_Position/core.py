@@ -7,7 +7,7 @@ coreLog = configureLogger(name="CORE")
 def init(configsSrc):
     mapWorker.initMap(configsSrc + "/map.txt")
 
-def process(player, message):
+def processMessage(player, message):
     if "MOVE" in message:
         cmd, dir = message.split(" ")
         return "MOVE " + processMovement(player, dir)
@@ -27,3 +27,6 @@ def processMovement(player, key):
         return str(x) + " " + str(y)
     else:
         return str(baseX) + " " + str(baseY)
+
+def getMap():
+    return mapWorker.getCurrentMap()

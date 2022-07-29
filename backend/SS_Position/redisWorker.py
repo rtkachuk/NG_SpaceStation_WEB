@@ -16,7 +16,7 @@ def getPlayerPostition(player):
 def ensurePositionExists(player):
     item = redis.get(player)
     if not redis.exists(player):
-        redis.set(player, "0 0")
+        redis.set(player, "20 20")
     item = redis.get(player)
     x,y = str(item.decode("utf8")).split(" ")
     return [ int(x), int(y) ]
