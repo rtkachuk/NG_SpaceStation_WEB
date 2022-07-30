@@ -6,13 +6,10 @@ var offsetX = 0;
 var offsetY = 0;
 
 mapData = [];
-//mapFile = "./configs/map.txt";
 
 function start() {
-  //parseMap();
   console.log(mapData);
   map.start();
-  //updateAll();
 }
 
 var map = {
@@ -78,6 +75,7 @@ function drawTile(id, x, y) {
       break;
     case "o":
       img = doorOpen;
+      break;
     default:
       img = floor;
       console.log(id);
@@ -135,6 +133,11 @@ function updateAll() {
   map.context.stroke();
 }
 
+function updateMap(x, y, item) {
+  mapData[y][x] = item;
+  updateAll();
+}
+
 function updatePlayerPos(id, x, y) {
   if (players.hasOwnProperty(id) == false) {
     players[id] = new component(50, 50, "red");
@@ -166,4 +169,5 @@ function offsetRight() {
 
 function kick(id) {
   delete players[id];
+  updateAll(id);
 }

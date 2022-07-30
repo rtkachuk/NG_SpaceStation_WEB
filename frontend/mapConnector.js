@@ -1,4 +1,4 @@
-let mapSocket = new WebSocket("ws://192.168.0.112:8082");
+let mapSocket = new WebSocket("ws://192.168.0.107:8082");
 
 mapSocket.onopen = function (e) {
   console.log("Map loading started")
@@ -7,8 +7,9 @@ mapSocket.onopen = function (e) {
 mapSocket.onmessage = function (event) {
   msg = event.data;
   if (msg.includes("MAP")) {
-    line = msg.split(/\s+/);
-    mapData.push(line[1])
+    line = msg.split(/\s+/)[1];
+    row = line.split('');
+    mapData.push(row)
   }
   if (msg.includes("END")) {
     start();

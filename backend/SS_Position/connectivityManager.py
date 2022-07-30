@@ -20,8 +20,9 @@ async def positionSocketHandler(websocket):
         while True:
             message = await websocket.recv()
             command = core.processMessage(player, message)
+            message = player + " " if "MOVE" in command else ""
             for client in clients:
-                await client.send(player + " " + command)
+                await client.send( message + command)
     except websockets.exceptions.ConnectionClosed:
         connectorLog.error ("Connection dropped")
         clients.remove(websocket)
@@ -33,7 +34,10 @@ async def mapSenderHandler(websocket):
         map = core.getMap()
         player = websocket.remote_address[0]
         for line in map:
-            await websocket.send("MAP " + line)
+            row = ""
+            for letter in line:
+                row += letter
+            await websocket.send("MAP " + row)
         await websocket.send("END")
         connectorLog.info("Delivered map for " + player)
     except websockets.exceptions.ConnectionClosed:

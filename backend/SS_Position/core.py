@@ -10,7 +10,7 @@ def init(configsSrc):
 def processMessage(player, message):
     if "MOVE" in message:
         cmd, dir = message.split(" ")
-        return "MOVE " + processMovement(player, dir)
+        return processMovement(player, dir)
     return "ERROR"
 
 def processMovement(player, key):
@@ -22,11 +22,13 @@ def processMovement(player, key):
         case "A": x-=1
         case "D": x+=1
 
+    resultPosition = str(x) + " " + str(y)
+
     if mapWorker.checkPositionMovable(x,y):
         redisWorker.setPlayerPosition(player,x,y)
-        return str(x) + " " + str(y)
+        return "MOVE " + str(x) + " " + str(y)
     else:
-        return str(baseX) + " " + str(baseY)
+        return "UPD " + resultPosition + " " + mapWorker.processOpenable(x,y)
 
 def getMap():
     return mapWorker.getCurrentMap()

@@ -1,4 +1,4 @@
-let socket = new WebSocket("ws://192.168.0.112:8081");
+let socket = new WebSocket("ws://192.168.0.107:8081");
 let ID = ""
 
 socket.onopen = function (e) {
@@ -18,7 +18,12 @@ socket.onmessage = function (event) {
   }
   if (msg.includes("KICK")) {
     player = msg.split(/\s+/)[1]
-
+    kick(player);
+  }
+  if (msg.includes("UPD")) {
+    item = msg.split(/\s+/)
+    console.log (item);
+    updateMap(item[1], item[2], item[3]);
   }
 };
 
