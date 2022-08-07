@@ -16,6 +16,10 @@ services:
     build: backend/SS_Position/.
     ports:
       - 127.0.0.1:8081:8081
-      - 127.0.0.1:8082:8082
     links:
       - redis
+  
+  ss_maploader:
+    build: backend/SS_MapLoader/.
+    ports:
+      - 127.0.0.1:8082:8082

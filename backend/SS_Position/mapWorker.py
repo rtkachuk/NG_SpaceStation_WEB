@@ -18,7 +18,3 @@ def processOpenable(x, y):
     match map[y][x]:
         case 'c': map[y][x] = 'o'
     return map[y][x]
-
-
-def getCurrentMap():
-    return map
