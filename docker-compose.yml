@@ -1,0 +1,21 @@
+version: "3.9"  # optional since v1.27.0
+services:
+  redis:
+    ports:
+      - 127.0.0.1:6379:6379
+    image: redis
+
+  web:
+    ports:
+     - 127.0.0.1:8080:80
+    volumes:
+     - ./frontend:/usr/share/nginx/html:ro
+    image: nginx
+
+  ss_position:
+    build: backend/SS_Position/.
+    ports:
+      - 127.0.0.1:8081:8081
+      - 127.0.0.1:8082:8082
+    links:
+      - redis

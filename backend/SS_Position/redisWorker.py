@@ -6,7 +6,7 @@ from logWorker import configureLogger
 redisLog = configureLogger(name="REDIS")
 
 redis = redis.Redis(
-    host = os.getenv("redisHost", default="localhost"),
+    host = os.getenv("redisHost", default="redis"),
     port = os.getenv("redisPort", default="6379")
 )
 

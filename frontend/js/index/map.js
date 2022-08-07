@@ -83,15 +83,6 @@ function drawTile(id, x, y) {
   map.context.drawImage(img, x, y, cSize, cSize);
 }
 
-/*function parseMap() {
-  fetch(mapFile)
-    .then((response) => response.text())
-    .then((data) => {
-      this.mapData = data.split(/\r?\n/);
-      initMap();
-    });
-}*/
-
 function initMap() {
   for (let y = 0; y < mapData.length; y++) {
     for (let x = 0; x < mapData[y].length; x++) {

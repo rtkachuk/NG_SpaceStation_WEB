@@ -1,4 +1,4 @@
-let mapSocket = new WebSocket("ws://192.168.0.107:8082");
+let mapSocket = new WebSocket("ws://127.0.0.1:8082");
 
 mapSocket.onopen = function (e) {
   console.log("Map loading started")
