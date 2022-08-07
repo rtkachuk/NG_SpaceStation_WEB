@@ -29,6 +29,5 @@ async def positionSocketHandler(websocket):
 async def main():
     async with websockets.serve(positionSocketHandler, "0.0.0.0", 8081, logger=posSockLog):
         await asyncio.Future()
-
-core.init("configs")
+        
 asyncio.run(main())

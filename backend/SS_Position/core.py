@@ -4,9 +4,6 @@ from logWorker import configureLogger
 
 coreLog = configureLogger(name="CORE")
 
-def init(configsSrc):
-    mapWorker.initMap(configsSrc + "/map.txt")
-
 def processMessage(player, message):
     if "MOVE" in message:
         cmd, dir = message.split(" ")
@@ -29,6 +26,3 @@ def processMovement(player, key):
         return "MOVE " + str(x) + " " + str(y)
     else:
         return "UPD " + resultPosition + " " + mapWorker.processOpenable(x,y)
-
-def getMap():
-    return mapWorker.getCurrentMap()

@@ -1,29 +1,21 @@
-let mapSocket = new WebSocket("ws://127.0.0.1:8082");
+function loadMap() {
+  const Http = new XMLHttpRequest();
+  Http.responseType = "json";
+  const url = "http://127.0.0.1:8082/map";
+  Http.open("GET", url);
+  Http.send();
 
-mapSocket.onopen = function (e) {
-  console.log("Map loading started")
-};
+  Http.onreadystatechange = function () {
+    if (Http.readyState == XMLHttpRequest.DONE) {
+      mapData = Http.response;
+      console.log(mapData);
+      start();
+    }
+  };
 
-mapSocket.onmessage = function (event) {
-  msg = event.data;
-  if (msg.includes("MAP")) {
-    line = msg.split(/\s+/)[1];
-    row = line.split('');
-    mapData.push(row)
-  }
-  if (msg.includes("END")) {
-    start();
-  }
-};
+  Http.onerror = function () {
+    alert("Ошибка " + Http.response);
+  };
+}
 
-mapSocket.onclose = function (event) {
-  if (event.wasClean) {
-    //alert(`[close] Connection closed cleanly, code=${event.code} reason=${event.reason}`);
-  } else {
-    //alert("[close] Connection died");
-  }
-};
-
-mapSocket.onerror = function (error) {
-  //alert(`[error] ${error.message}`);
-};
+loadMap();

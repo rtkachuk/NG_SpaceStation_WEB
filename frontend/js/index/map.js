@@ -78,7 +78,6 @@ function drawTile(id, x, y) {
       break;
     default:
       img = floor;
-      console.log(id);
   }
   map.context.drawImage(img, x, y, cSize, cSize);
 }

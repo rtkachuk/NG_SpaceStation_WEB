@@ -1,20 +1,25 @@
+import requests
+import os
 from logWorker import configureLogger
 mapLog = configureLogger(name="MapWorker")
 
-map = []
 
-def initMap(src):
-    mapFile = open(src, "r")
-    for line in mapFile:
-        row = []
-        for letter in line:
-            row.append(letter)
-        map.append(row)
+def getElement(x, y):
+    response = requests.get(os.getenv("mapLoaderUrl", 
+                            default="http://ss_maploader:8082/getElem?x=" + str(x) + "&y=" + str(y)))
+    return response.text
+
+def setElement(elem, x, y):
+    response = requests.get(os.getenv("mapLoaderUrl", 
+                            default="http://ss_maploader:8082/setElem?elem=" + str(elem) + "&x=" + str(x) + "&y=" + str(y)))
+    return response.text
 
 def checkPositionMovable(x, y):
-    return map[y][x] == '.' or map[y][x] == 'o'
+    item = getElement(x, y)
+    return item == '.' or item == 'o'
 
 def processOpenable(x, y):
-    match map[y][x]:
-        case 'c': map[y][x] = 'o'
-    return map[y][x]
+    item = getElement(x ,y)
+    match item:
+        case 'c': return setElement('o', x, y)
+    return item

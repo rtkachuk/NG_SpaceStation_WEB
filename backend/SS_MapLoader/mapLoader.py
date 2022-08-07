@@ -11,5 +11,11 @@ def initMap(src):
             row.append(letter)
         map.append(row)
 
+def replaceItem(elem, x, y):
+    map[y][x] = elem
+
+def getItem(x, y):
+    return map[y][x]
+
 def getCurrentMap():
     return map
