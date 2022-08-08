@@ -10,6 +10,9 @@ socket.onmessage = function (event) {
   if (msg.includes("MOVE")) {
     console.log(msg);
     pos = msg.split(/\s+/);
+    if (pos[4] != "") {
+      updateMap(pos[5], pos[6], pos[4]);
+    }
     updatePlayerPos(pos[0], pos[2], pos[3]) // ID, x, y
   }
   if (msg.includes("ID")) {
