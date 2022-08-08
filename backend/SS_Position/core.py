@@ -13,6 +13,9 @@ def processMessage(player, message):
 def processMovement(player, key):
     baseX,baseY = redisWorker.getPlayerPostition(player)
     x,y = baseX,baseY
+    door_closed = ""
+    if mapWorker.processOpenable(x,y) == 'c':
+        door_closed = 'c' + " " + str(x) + " " + str(y)
     match (key):
         case "W": y-=1
         case "S": y+=1
@@ -23,6 +26,6 @@ def processMovement(player, key):
 
     if mapWorker.checkPositionMovable(x,y):
         redisWorker.setPlayerPosition(player,x,y)
-        return "MOVE " + str(x) + " " + str(y)
+        return "MOVE " + str(x) + " " + str(y) + " " + door_closed
     else:
         return "UPD " + resultPosition + " " + mapWorker.processOpenable(x,y)

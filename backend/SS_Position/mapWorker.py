@@ -21,5 +21,6 @@ def checkPositionMovable(x, y):
 def processOpenable(x, y):
     item = getElement(x ,y)
     match item:
+        case 'o': return setElement('c', x, y)
         case 'c': return setElement('o', x, y)
     return item
