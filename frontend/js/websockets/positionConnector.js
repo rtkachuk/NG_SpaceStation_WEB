@@ -7,11 +7,6 @@ socket.onopen = function (e) {
 
 socket.onmessage = function (event) {
   msg = event.data;
-  if (msg.includes("MOVE")) {
-    console.log(msg);
-    pos = msg.split(/\s+/);
-    updatePlayerPos(pos[0], pos[2], pos[3]) // ID, x, y
-  }
   if (msg.includes("ID")) {
     ID = msg.split(/\s+/)[1];
     console.log("ID: " + ID);
@@ -19,11 +14,6 @@ socket.onmessage = function (event) {
   if (msg.includes("KICK")) {
     player = msg.split(/\s+/)[1]
     kick(player);
-  }
-  if (msg.includes("UPD")) {
-    item = msg.split(/\s+/)
-    console.log (item);
-    updateMap(item[1], item[2], item[3]);
   }
 };
 
