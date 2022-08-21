@@ -7,7 +7,7 @@ services:
 
   web:
     ports:
-     - 127.0.0.1:8080:80
+     - 8080:80
     volumes:
      - ./frontend:/usr/share/nginx/html:ro
     image: nginx
@@ -15,7 +15,7 @@ services:
   ss_position:
     build: backend/SS_Position/.
     ports:
-      - 127.0.0.1:8081:8081
+      - 8081:8081
     links:
       - redis
       - ss_maploader
@@ -23,4 +23,10 @@ services:
   ss_maploader:
     build: backend/SS_MapLoader/.
     ports:
-      - 127.0.0.1:8082:8082
+      - 8082:8082
+
+  ss_connector:
+    build: backend/SS_Connector/.
+    ports:
+      - 8083:8083
+      - 8084:8084
