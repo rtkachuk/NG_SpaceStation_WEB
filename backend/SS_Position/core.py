@@ -22,9 +22,9 @@ def processMovement(player, key):
     resultPosition = str(x) + " " + str(y)
 
     closed = checkDoorClosing(baseX,baseY)
-    if closed != "":
+    if closed:
         redisWorker.setPlayerPosition(player,x,y)
-        return  "CLOSE " + str(x) + " " + str(y) + " " + closed
+        return  "CLOSE " + str(x) + " " + str(y) + " " + 'c' + " " + str(baseX) + " " + str(baseY)
     elif mapWorker.checkPositionMovable(x,y):
         redisWorker.setPlayerPosition(player,x,y)
         return "MOVE " + str(x) + " " + str(y)
@@ -32,7 +32,8 @@ def processMovement(player, key):
         return "UPD " + resultPosition + " " + mapWorker.processOpenable(x,y)
 
 def checkDoorClosing(x, y):
-    door_closed = ""
+    door_closed = False
     if mapWorker.processOpenable(x,y) == 'c':
-        door_closed = 'c' + " " + str(x) + " " + str(y)
+        door_closed = True
     return door_closed
+
