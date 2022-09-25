@@ -17,9 +17,6 @@ async def positionSocketHandler(websocket):
         while True:
             message = await websocket.recv()
             command = core.processMessage(player, message)
-            message = player + " " if not "UPD" in command else ""
-            for client in clients:
-                await client.send( message + command)
     except websockets.exceptions.ConnectionClosed:
         posSockLog.error ("Connection dropped")
         clients.remove(websocket)
