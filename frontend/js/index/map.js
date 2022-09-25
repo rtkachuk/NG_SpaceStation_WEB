@@ -31,7 +31,7 @@ function drawTile(id, x, y) {
     case ".":
       img = floor;
       break;
-    case "#":
+    case "w":
       img = wall;
       break;
     case "1":
