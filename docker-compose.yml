@@ -30,3 +30,8 @@ services:
     ports:
       - 8083:8083
       - 8084:8084
+  
+  ss_itemskeeper:
+    build: backend/SS_ItemsKeeper/.
+    ports:
+      - 8085:8085
