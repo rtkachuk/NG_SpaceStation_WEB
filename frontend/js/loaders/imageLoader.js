@@ -28,13 +28,11 @@ function newImage(src){
 }
 
 function initImages(imagesData) {
-    console.log(imagesData);
     imagesData.forEach(function (image) {
         imagePlaceholders[image["pholder"]] = newImage(image["img"]);
         image["img"] = newImage(image["img"]);
         images[image['id']] = image;
     });
-    console.log(images);
     /*imagesData.forEach(function(imageData) {
         //imageNames += imagePath.split("/").pop().split(".")[0]; // "/items/null.png" -> null.png -> null
        images.push(imageData);
