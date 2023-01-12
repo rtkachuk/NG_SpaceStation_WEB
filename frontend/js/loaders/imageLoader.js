@@ -1,15 +1,18 @@
+//imageNames = []
+imagePaths = []
+imagePlaceholders = []
+
 function loadImages() {
     const Http = new XMLHttpRequest();
     Http.responseType = "json";
-    const url = "http://127.0.0.1:8085/getImagesList";
+    const url = "http://127.0.0.1:8085/getImages";
     Http.open("POST", url);
     Http.send();
   
     Http.onreadystatechange = function () {
         if (Http.readyState == XMLHttpRequest.DONE) {
-            imagesList = Http.response;
-            console.log(imagesList);
-            initImages(imagesList);
+            dataForImages = Http.response;
+            initImages(dataForImages);
         }
     };
     
@@ -24,13 +27,18 @@ function newImage(src){
     return tmp
 }
 
-function initImages(imagePaths) {
-    imagePaths.forEach(function(imagePath) {
-        imageName = imagePath.split("/").pop().split(".")[0]; // "/items/null.png" -> null.png -> null
-        images[imageName] = newImage(imagePath);
+function initImages(imagesData) {
+    console.log(imagesData);
+    imagesData.forEach(function (image) {
+        imagePlaceholders[image["pholder"]] = newImage(image["img"]);
+        image["img"] = newImage(image["img"]);
+        images[image['id']] = image;
     });
-
     console.log(images);
+    /*imagesData.forEach(function(imageData) {
+        //imageNames += imagePath.split("/").pop().split(".")[0]; // "/items/null.png" -> null.png -> null
+       images.push(imageData);
+    });*/
 }
 
 loadImages();

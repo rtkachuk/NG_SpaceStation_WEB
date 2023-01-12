@@ -19,11 +19,32 @@ def getItemInfo():
     response.mimetype = "application/json"
     return response
 
+@api.route('/getItemByPlaceHolder', methods=['POST'])
+def getIdByPlaceHolder():
+    placeHolder = str(request.form.get('pholder'))
+    for item in itemsList:
+        if item['pholder'] == placeHolder:
+            return generateResponse(json.dumps(item))
+    return generateResponse("NO ITEM")
+
+@api.route('/getImages', methods=['POST'])
+def getImages():
+    return generateResponse(json.dumps(itemsList));
+
 @api.route('/getImagesList', methods=['POST'])
 def getImagesList():
     imagesList = list(map(lambda x: x["img"], itemsList))
     return generateResponse(json.dumps(imagesList));
 
+@api.route('/getPlaceholders', methods=['POST'])
+def getPlaceHolders():
+    placeholders = list(map(lambda x: x["pholder"], itemsList))
+    return generateResponse(json.dumps(placeholders))
+
+@api.route('/getNames', methods=['POST'])
+def getNames():
+    names = list(map(lambda x: x["name"], itemsList))
+    return generateResponse(json.dumps(names))
 
 def start():
     initItems("configs/items.txt")

@@ -6,6 +6,7 @@ var offsetX = 0;
 var offsetY = 0;
 
 mapData = [];
+imagePlaceholders = {};
 images = {};
 
 function start() {
@@ -27,8 +28,10 @@ var map = {
 };
 
 function drawTile(id, x, y) {
-  img = null;
-  switch (id) {
+  img = imagePlaceholders[id];
+  if (typeof img == 'undefined')
+    img = imagePlaceholders['.'];
+  /*switch (id) {
     case ".": img = images["floor"]; break;
     case "w": img = images["wall"]; break;
     case "1": img = images["floor1"]; break;
@@ -46,7 +49,7 @@ function drawTile(id, x, y) {
     case "c": img = images["door_closed"]; break;
     case "o": img = images["door_open"]; break;
     default: img = images["floor"];
-  }
+  }*/
   
   map.context.drawImage(img, x, y, cSize, cSize);
 }
@@ -71,7 +74,7 @@ function component(x, y) {
   this.update = function () {
     ctx = map.context;
     ctx.drawImage(
-      images["fox_right"],
+      images[57]["img"], // Player image ID
       this.x + offsetX * cSize,
       this.y + offsetY * cSize,
       cSize,

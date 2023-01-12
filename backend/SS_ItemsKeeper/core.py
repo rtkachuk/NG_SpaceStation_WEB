@@ -11,7 +11,8 @@ def parseItem(item):
         "dmgType": items[5],
         "damage": int(items[6]),
         "img": items[7],
-        "desc": items[8] 
+        "pholder": items[8],
+        "desc": items[9] 
     }
     return result
 

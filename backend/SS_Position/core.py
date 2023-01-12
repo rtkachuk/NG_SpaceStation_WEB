@@ -5,10 +5,11 @@ import os
 from logWorker import configureLogger
 
 coreLog = configureLogger(name="CORE")
+itemsKeeperUrl = os.getenv("ItemsKeeperUrl", default="http://ss_itemskeeper:8085")
+managerUrl = os.getenv("ManagerUrl", default="http://ss_manager:8084")
 
 def sendToAll(message):
-    response = requests.get(os.getenv("ManagerUrl", 
-                            default="http://ss_manager:8084/send?msg=" + str(message)))
+    response = requests.get(managerUrl + "/send?msg=" + str(message))
     if str(response.status_code) != "200":
         coreLog.error(message + ": " + str(response.status_code))
 

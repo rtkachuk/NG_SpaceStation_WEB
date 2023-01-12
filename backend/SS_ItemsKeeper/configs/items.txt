@@ -1,60 +1,60 @@
-0:tool:NULL:holdable:hammering:melee:0:./images/items/null.png:NULL
-1:tool:Молоток:holdable:hammering:melee:10:./images/items/hammer.png:Молотком можно забивать гвозди, чинить советские телевизоры, или мнение других людей.
-2:tool:Отвёртка:holdable:screwing:melee:15:./images/items/screwdriver.png:Универсальная отвёртка - незаменимая вещь для любого инженера! Ну, или гопника.
-3:tool:Разводной ключ:holdable:wrenching:melee:25:./images/items/adjustable_wrench.png:Разводным ключём удобно монтировать трубы любого размера. Также можно неплохо так проломить череп.
-4:tool:Плоскогубцы:holdable:wrenching:melee:15:./images/items/pliers.png:Плоскогубцами также можно открутить гайки, или обжать провода. Удобно
-5:tool:Кусачки:holdable:cutting:melee:5:./images/items/wirecutters.png:Кусачки - идеальный инструмент для ремонта проводки, или диверсии
-6:tool:Кисть:holdable:nomode:melee:1:./images/items/brush.png:Кистью можно красить... Или развозить яд по стенам
-7:tool:"Библия":holdable:notool:melee:5:./images/books/book_religion.png:Карманная библия? Усомнился в своих силах?
-8:tool:"Готовить весело!":holdable:notool:melee:5:./images/books/book_cooking.png:101 рецепт салата из тыкв! Очень познавательно.
-9:tool:"Прикладная механика":holdable:notool:melee:5:./images/books/book_engineering.png:Куча рецептов для инженерки... с картинками! Кто-то оставил закладку с номером борделя - однозначно полезная штука!
-10:tool:"История галактики":holdable:notool:melee:5:./images/books/book_history.png:Краткая история всего, что происходило с нашей вселенной... Сборник анекдотов, короче.
-11:tool:"Книга магии":holdable:notool:melee:5:./images/books/book_magic.png:Это тебе не зайчика из шляпки вытаскивать!
-12:tool:"Терапия головного мозга":holdable:notool:melee:5:./images/books/book_medicine.png:В принципе, если ты можешь лечить - лечи. А лицензия - это уже потом.
-13:tool:"Энциклопедия сектора ЦН-8-TU":holdable:notool:melee:5:./images/books/book_science.png:Как вообще это всё можно удержать в голове?
-14:tool:Ноутбук:holdable:notool:noweapon:0:./images/items/notebook.png:Из-за нехватки финансирования мы получили квантовые компьютеры третьего поколения, вместо пятого. Это даже не старьё, это рухлядь. Но на этой рухляди можно дебажить ИИ нашей станции.
-15:weapon:Топор:holdable:notool:melee:40:./images/items/axe.png:Топор - на Земле им рубили лес, сейчас же можно запросто рубить головы.
-16:tool:Резиновые перчатки:gloves:notool:noweapon:0:./images/items/rubber_gloves.png:Резиновые перчатки - твой личный крест против электричества и антисанитарии!
-17:tool:Резиновые сапоги:feet:notool:noweapon:0:./images/items/rubber_boots.png:Резиновые сапоги - лучшая защита от грязи и электричества!
-18:tool:Сварочная маска:head:notool:noweapon:0:./images/items/welding_mask.png:Сварочная маска - если не хочешь носить свои глаза в пакетике, лучше использовать перед сваркой!
-19:tool:Сварочный аппарат:holdable:welding:noweapon:0:./images/items/welding_machine.png:Твой друг уснул в защитном костюме из металлических пластин? Привари его к стулу, вот умора!
-20:furniture:Ящик:itemnomode:notool:noweapon:0:./images/furniture/box.png:Ящик. В нём можно хранить что-то, или кого-то.
-21:furniture:Стол:itemnomode:notool:noweapon:0:./images/buildings/table.png:Стол, на который можно что-то положить.
-22:furniture:Серверная стойка:itemnomode:notool:noweapon:0:./images/tech/server_rack_kvm.png:Серверная стойка. Ничего особо интересного, нужно найти терминал, чтобы управлять ею.
-23:furniture:Серверный терминал:itemnomode:notool:noweapon:0:./images/tech/server_rack_kvm.png:Терминал. Через него я могу покопаться на серверных стойках, которые как правило стоят неподалёку
-24:notype:Лужа крови:itemnomode:notool:noweapon:0:./images/misc/blood.png:Лужа крови, ничего необычного
-25:tool:Кувалда:holdable:hammering:melee:40:./images/items/big_hammer.png:Кувалда, такое погоняло было у вашего одногрупника, вот только одно непонятно: почему? Что же, вам предстоит узнать!
-26:material:Микросхема:holdable:notool:noweapon:0:./images/materials/circuit.png:Обычная микросхема, которых полным-полно в любом электронном приборе начиная от щитков и до самых серверных стоек. Практически незаменимая вещь, очень сложна в производстве для наших мощностей, и на станции находится не в таком уж и большом колличестве. Потому старайся либо ремонтировать уже существующие железяки, либо не трать попусту.
-27:tool:Динамит:holdable:notool:noweapon:0:./images/items/dynamite.png:ПАПА ХОЧЕТ СДЕЛАТЬ БУМ!
-28:material:Лист металла:itemnomode:notool:noweapon:0:./images/materials/metal_sheet.png:Лист металла, необходимый для строительства. Ничего особо необычного я не вижу.
-29:material:Радиодетали:itemnomode:notool:noweapon:0:./images/materials/radio_parts.png:Проводочки, диодики, контроллеры, motorola 6205, короче... Рай для ботанов с паяльником.
-30:material:Моток зелёного провода:itemnomode:notool:noweapon:0:./images/materials/green_wires.png:Моток зелёного провода с стальной серцевиной и тройной изоляцией - идеально подходит для питания компонентов станции.
-31:material:Моток синего провода:itemnomode:notool:noweapon:0:./images/materials/blue_wires.png:Провод с кучей маленьких медных проводов внутри и экранированием - напоминает сетевой кабель. Идеально подойдёт для подключения компьютеров или всякого рода вычислительной техники.
-32:material:Кусок медного провода:itemnomode:notool:noweapon:0:./images/materials/copper_wire.png:кусок провода без какой-либо изоляции... Не думаю, что его можно применить для подключения чего-то, но вот для крафта - самый раз!
-33:tool:Швабра:holdable:cleaning:melee:5:./images/items/mop.png:Чисти-чисти, давай. Вот так вот, чисти, раз-раз-раз...
-34:tool:Ведро:itemnomode:notool:noweapon:0:./images/items/bucket.png:Ведро для того, чтобы скрыть улики преступления... Или помыть пол.
-35:tool:Аптечка:holdable:healing:noweapon:0:./images/items/medkit.png:Мечта инвалида.
-36:tool:Шприц с кровью:holdable:notool:melee:3:./images/items/syringe_blood.png:Идеально для анализа содержимого!
-37:tool:"Космолептин":holdable:healing:melee:3:./images/items/syringe_green.png:Шприц с мешаниной, которая судя по бирке является "Лекарством от космической чихотки". Хм...
-38:tool:"Абраксол":holdable:healing:melee:3:./images/items/syringe_purple.png:Вроде как обезбаливающее.
-39:tool:Коммуникатор:holdable:notool:noweapon:0:./images/items/pda.png:Основное средство связи. Без него я не могу слышать остальных.
-40:tool:Балон с кислородом:holdable:notool:melee:20:./images/items/oxygen_tank.png:Живительный кислород!
-41:furniture:Провод:nomode:notool:noweapon:0:./images/tech/straight_wires.png:Установленный провод. Как ты его смог взять?
-42:passage:Пол0:nomode:notool:noweapon:0:./images/buildings/floor.png:Обычный металлический пол
-43:passage:Пол1:nomode:notool:noweapon:0:./images/buildings/floor1.png:Обычный металлический пол
-44:passage:Пол2:nomode:notool:noweapon:0:./images/buildings/floor2.png:Обычный металлический пол
-45:passage:Пол3:nomode:notool:noweapon:0:./images/buildings/floor3.png:Обычный металлический пол
-46:passage:Пол4:nomode:notool:noweapon:0:./images/buildings/floor4.png:Обычный металлический пол
-47:passage:Пол5:nomode:notool:noweapon:0:./images/buildings/floor5.png:Обычный металлический пол
-48:passage:Пол6:nomode:notool:noweapon:0:./images/buildings/floor6.png:Обычный металлический пол
-49:passage:Пол7:nomode:notool:noweapon:0:./images/buildings/floor7.png:Обычный металлический пол
-50:passage:Пол8:nomode:notool:noweapon:0:./images/buildings/floor8.png:Обычный металлический пол
-51:passage:Пол9:nomode:notool:noweapon:0:./images/buildings/floor9.png:Обычный металлический пол
-52:passage:Пол10:nomode:notool:noweapon:0:./images/buildings/floor10.png:Обычный металлический пол
-53:passage:Пол11:nomode:notool:noweapon:0:./images/buildings/floor11.png:Обычный металлический пол
-54:passage:Пол12:nomode:notool:noweapon:0:./images/buildings/floor12.png:Обычный металлический пол
-55:passage:Дверь открытая:nomode:notool:noweapon:0:./images/buildings/door_open.png:Открытая обычная Дверь
-56:structure:Дверь закрытая:nomode:notool:noweapon:0:./images/buildings/door_closed.png:Закрытая обычная Дверь
-57:player:Игрок:nomode:notool:noweapon:0:./images/players/fox_right.png:Ты, тут ничего не скажешь
-58:structure:Стена:nomode:notool:noweapon:0:./images/buildings/wall.png:То, что ты обычно держишь на дискотеке
-59:environment:Космос1:nomode:notool:noweapon:0:./images/misc/space1.png:Открытый космос
+0:tool:NULL:holdable:hammering:melee:0:./images/items/null.png:0:NULL
+1:tool:Молоток:holdable:hammering:melee:10:./images/items/hammer.png:0:Молотком можно забивать гвозди, чинить советские телевизоры, или мнение других людей.
+2:tool:Отвёртка:holdable:screwing:melee:15:./images/items/screwdriver.png:0:Универсальная отвёртка - незаменимая вещь для любого инженера! Ну, или гопника.
+3:tool:Разводной ключ:holdable:wrenching:melee:25:./images/items/adjustable_wrench.png:0:Разводным ключём удобно монтировать трубы любого размера. Также можно неплохо так проломить череп.
+4:tool:Плоскогубцы:holdable:wrenching:melee:15:./images/items/pliers.png:0:Плоскогубцами также можно открутить гайки, или обжать провода. Удобно
+5:tool:Кусачки:holdable:cutting:melee:5:./images/items/wirecutters.png:0:Кусачки - идеальный инструмент для ремонта проводки, или диверсии
+6:tool:Кисть:holdable:nomode:melee:1:./images/items/brush.png:0:Кистью можно красить... Или развозить яд по стенам
+7:tool:"Библия":holdable:notool:melee:5:./images/books/book_religion.png:0:Карманная библия? Усомнился в своих силах?
+8:tool:"Готовить весело!":holdable:notool:melee:5:./images/books/book_cooking.png:0:101 рецепт салата из тыкв! Очень познавательно.
+9:tool:"Прикладная механика":holdable:notool:melee:5:./images/books/book_engineering.png:0:Куча рецептов для инженерки... с картинками! Кто-то оставил закладку с номером борделя - однозначно полезная штука!
+10:tool:"История галактики":holdable:notool:melee:5:./images/books/book_history.png:0:Краткая история всего, что происходило с нашей вселенной... Сборник анекдотов, короче.
+11:tool:"Книга магии":holdable:notool:melee:5:./images/books/book_magic.png:0:Это тебе не зайчика из шляпки вытаскивать!
+12:tool:"Терапия головного мозга":holdable:notool:melee:5:./images/books/book_medicine.png:0:В принципе, если ты можешь лечить - лечи. А лицензия - это уже потом.
+13:tool:"Энциклопедия сектора ЦН-8-TU":holdable:notool:melee:5:./images/books/book_science.png:0:Как вообще это всё можно удержать в голове?
+14:tool:Ноутбук:holdable:notool:noweapon:0:./images/items/notebook.png:0:Из-за нехватки финансирования мы получили квантовые компьютеры третьего поколения, вместо пятого. Это даже не старьё, это рухлядь. Но на этой рухляди можно дебажить ИИ нашей станции.
+15:weapon:Топор:holdable:notool:melee:40:./images/items/axe.png:0:Топор - на Земле им рубили лес, сейчас же можно запросто рубить головы.
+16:tool:Резиновые перчатки:gloves:notool:noweapon:0:./images/items/rubber_gloves.png:0:Резиновые перчатки - твой личный крест против электричества и антисанитарии!
+17:tool:Резиновые сапоги:feet:notool:noweapon:0:./images/items/rubber_boots.png:0:Резиновые сапоги - лучшая защита от грязи и электричества!
+18:tool:Сварочная маска:head:notool:noweapon:0:./images/items/welding_mask.png:0:Сварочная маска - если не хочешь носить свои глаза в пакетике, лучше использовать перед сваркой!
+19:tool:Сварочный аппарат:holdable:welding:noweapon:0:./images/items/welding_machine.png:0:Твой друг уснул в защитном костюме из металлических пластин? Привари его к стулу, вот умора!
+20:furniture:Ящик:itemnomode:notool:noweapon:0:./images/furniture/box.png:0:Ящик. В нём можно хранить что-то, или кого-то.
+21:furniture:Стол:itemnomode:notool:noweapon:0:./images/buildings/table.png:0:Стол, на который можно что-то положить.
+22:furniture:Серверная стойка:itemnomode:notool:noweapon:0:./images/tech/server_rack_kvm.png:0:Серверная стойка. Ничего особо интересного, нужно найти терминал, чтобы управлять ею.
+23:furniture:Серверный терминал:itemnomode:notool:noweapon:0:./images/tech/server_rack_kvm.png:0:Терминал. Через него я могу покопаться на серверных стойках, которые как правило стоят неподалёку
+24:notype:Лужа крови:itemnomode:notool:noweapon:0:./images/misc/blood.png:0:Лужа крови, ничего необычного
+25:tool:Кувалда:holdable:hammering:melee:40:./images/items/big_hammer.png:0:Кувалда, такое погоняло было у вашего одногрупника, вот только одно непонятно: почему? Что же, вам предстоит узнать!
+26:material:Микросхема:holdable:notool:noweapon:0:./images/materials/circuit.png:0:Обычная микросхема, которых полным-полно в любом электронном приборе начиная от щитков и до самых серверных стоек. Практически незаменимая вещь, очень сложна в производстве для наших мощностей, и на станции находится не в таком уж и большом колличестве. Потому старайся либо ремонтировать уже существующие железяки, либо не трать попусту.
+27:tool:Динамит:holdable:notool:noweapon:0:./images/items/dynamite.png:0:ПАПА ХОЧЕТ СДЕЛАТЬ БУМ!
+28:material:Лист металла:itemnomode:notool:noweapon:0:./images/materials/metal_sheet.png:0:Лист металла, необходимый для строительства. Ничего особо необычного я не вижу.
+29:material:Радиодетали:itemnomode:notool:noweapon:0:./images/materials/radio_parts.png:0:Проводочки, диодики, контроллеры, motorola 6205, короче... Рай для ботанов с паяльником.
+30:material:Моток зелёного провода:itemnomode:notool:noweapon:0:./images/materials/green_wires.png:0:Моток зелёного провода с стальной серцевиной и тройной изоляцией - идеально подходит для питания компонентов станции.
+31:material:Моток синего провода:itemnomode:notool:noweapon:0:./images/materials/blue_wires.png:0:Провод с кучей маленьких медных проводов внутри и экранированием - напоминает сетевой кабель. Идеально подойдёт для подключения компьютеров или всякого рода вычислительной техники.
+32:material:Кусок медного провода:itemnomode:notool:noweapon:0:./images/materials/copper_wire.png:0:кусок провода без какой-либо изоляции... Не думаю, что его можно применить для подключения чего-то, но вот для крафта - самый раз!
+33:tool:Швабра:holdable:cleaning:melee:5:./images/items/mop.png:0:Чисти-чисти, давай. Вот так вот, чисти, раз-раз-раз...
+34:tool:Ведро:itemnomode:notool:noweapon:0:./images/items/bucket.png:0:Ведро для того, чтобы скрыть улики преступления... Или помыть пол.
+35:tool:Аптечка:holdable:healing:noweapon:0:./images/items/medkit.png:0:Мечта инвалида.
+36:tool:Шприц с кровью:holdable:notool:melee:3:./images/items/syringe_blood.png:0:Идеально для анализа содержимого!
+37:tool:"Космолептин":holdable:healing:melee:3:./images/items/syringe_green.png:0:Шприц с мешаниной, которая судя по бирке является "Лекарством от космической чихотки". Хм...
+38:tool:"Абраксол":holdable:healing:melee:3:./images/items/syringe_purple.png:0:Вроде как обезбаливающее.
+39:tool:Коммуникатор:holdable:notool:noweapon:0:./images/items/pda.png:0:Основное средство связи. Без него я не могу слышать остальных.
+40:tool:Балон с кислородом:holdable:notool:melee:20:./images/items/oxygen_tank.png:0:Живительный кислород!
+41:furniture:Провод:nomode:notool:noweapon:0:./images/tech/straight_wires.png:0:Установленный провод. Как ты его смог взять?
+42:passage:Пол0:nomode:notool:noweapon:0:./images/buildings/floor.png:.:Обычный металлический пол
+43:passage:Пол1:nomode:notool:noweapon:0:./images/buildings/floor1.png:1:Обычный металлический пол
+44:passage:Пол2:nomode:notool:noweapon:0:./images/buildings/floor2.png:2:Обычный металлический пол
+45:passage:Пол3:nomode:notool:noweapon:0:./images/buildings/floor3.png:3:Обычный металлический пол
+46:passage:Пол4:nomode:notool:noweapon:0:./images/buildings/floor4.png:4:Обычный металлический пол
+47:passage:Пол5:nomode:notool:noweapon:0:./images/buildings/floor5.png:5:Обычный металлический пол
+48:passage:Пол6:nomode:notool:noweapon:0:./images/buildings/floor6.png:6:Обычный металлический пол
+49:passage:Пол7:nomode:notool:noweapon:0:./images/buildings/floor7.png:7:Обычный металлический пол
+50:passage:Пол8:nomode:notool:noweapon:0:./images/buildings/floor8.png:8:Обычный металлический пол
+51:passage:Пол9:nomode:notool:noweapon:0:./images/buildings/floor9.png:9:Обычный металлический пол
+52:passage:Пол10:nomode:notool:noweapon:0:./images/buildings/floor10.png:@:Обычный металлический пол
+53:passage:Пол11:nomode:notool:noweapon:0:./images/buildings/floor11.png:!:Обычный металлический пол
+54:passage:Пол12:nomode:notool:noweapon:0:./images/buildings/floor12.png:0:Обычный металлический пол
+55:passage:Дверь открытая:nomode:notool:noweapon:0:./images/buildings/door_open.png:o:Открытая обычная Дверь
+56:structure:Дверь закрытая:nomode:notool:noweapon:0:./images/buildings/door_closed.png:c:Закрытая обычная Дверь
+57:player:Игрок:nomode:notool:noweapon:0:./images/players/fox_right.png:0:Ты, тут ничего не скажешь
+58:structure:Стена:nomode:notool:noweapon:0:./images/buildings/wall.png:w:То, что ты обычно держишь на дискотеке
+59:environment:Космос1:nomode:notool:noweapon:0:./images/misc/space1.png:*:Открытый космос
