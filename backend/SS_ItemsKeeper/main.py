@@ -29,7 +29,11 @@ def getIdByPlaceHolder():
 
 @api.route('/getImages', methods=['POST'])
 def getImages():
-    return generateResponse(json.dumps(itemsList));
+    return generateResponse(json.dumps(itemsList))
+
+@api.route('/getPositions', methods=['POST'])
+def getPositions():
+    return generateResponse(json.dumps(positions))
 
 @api.route('/getImagesList', methods=['POST'])
 def getImagesList():
@@ -47,7 +51,7 @@ def getNames():
     return generateResponse(json.dumps(names))
 
 def start():
-    initItems("configs/items.txt")
+    initItems()
     api.run(host="0.0.0.0", port=8085)
 
 start()

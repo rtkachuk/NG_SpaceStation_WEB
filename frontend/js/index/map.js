@@ -8,6 +8,7 @@ var offsetY = 0;
 mapData = [];
 imagePlaceholders = {};
 images = {};
+items = [];
 
 function start() {
   console.log(mapData);
@@ -31,26 +32,6 @@ function drawTile(id, x, y) {
   img = imagePlaceholders[id];
   if (typeof img == 'undefined')
     img = imagePlaceholders['.'];
-  /*switch (id) {
-    case ".": img = images["floor"]; break;
-    case "w": img = images["wall"]; break;
-    case "1": img = images["floor1"]; break;
-    case "2": img = images["floor2"]; break;
-    case "3": img = images["floor3"]; break;
-    case "4": img = images["floor4"]; break;
-    case "5": img = images["floor5"]; break;
-    case "6": img = images["floor6"]; break;
-    case "7": img = images["floor7"]; break;
-    case "8": img = images["floor8"]; break;
-    case "9": img = images["floor9"]; break;
-    case "@": img = images["floor10"]; break;
-    case "!": img = images["floor11"]; break;
-    case "*": img = images["space1"]; break;
-    case "c": img = images["door_closed"]; break;
-    case "o": img = images["door_open"]; break;
-    default: img = images["floor"];
-  }*/
-  
   map.context.drawImage(img, x, y, cSize, cSize);
 }
 
@@ -66,15 +47,16 @@ function initMap() {
   }
 }
 
-function component(x, y) {
+function component(x, y, id, image) {
   this.width = cSize;
   this.height = cSize;
-  this.x = 0;
-  this.y = 0;
+  this.id = id;
+  this.x = x * cSize;
+  this.y = y * cSize;
   this.update = function () {
     ctx = map.context;
     ctx.drawImage(
-      images[57]["img"], // Player image ID
+      image,
       this.x + offsetX * cSize,
       this.y + offsetY * cSize,
       cSize,
@@ -82,8 +64,8 @@ function component(x, y) {
     );
   };
   this.newPos = function (x, y) {
-    this.x = x;
-    this.y = y;
+    this.x = x * cSize;
+    this.y = y * cSize;
   };
 }
 
@@ -92,6 +74,9 @@ function updateAll() {
   for (const [key, value] of Object.entries(players)) {
     value.update();
   }
+  items.forEach(function(item) {
+    item.update();
+  });
   map.context.stroke();
 }
 
@@ -102,10 +87,10 @@ function updateMap(x, y, item) {
 
 function updatePlayerPos(id, x, y) {
   if (players.hasOwnProperty(id) == false) {
-    players[id] = new component(50, 50);
+    players[id] = new component(50, 50, 57, images[57]["img"]);
   }
   player = players[id];
-  player.newPos(x * cSize, y * cSize);
+  player.newPos(x, y);
   updateAll();
 }
 
