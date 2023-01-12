@@ -28,57 +28,25 @@ var map = {
 function drawTile(id, x, y) {
   img = null;
   switch (id) {
-    case ".":
-      img = floor;
-      break;
-    case "w":
-      img = wall;
-      break;
-    case "1":
-      img = floor1;
-      break;
-    case "2":
-      img = floor2;
-      break;
-    case "3":
-      img = floor3;
-      break;
-    case "4":
-      img = floor4;
-      break;
-    case "5":
-      img = floor5;
-      break;
-    case "6":
-      img = floor6;
-      break;
-    case "7":
-      img = floor7;
-      break;
-    case "8":
-      img = floor8;
-      break;
-    case "9":
-      img = floor9;
-      break;
-    case "@":
-      img = floor10;
-      break;
-    case "!":
-      img = floor11;
-      break;
-    case "*":
-      img = space1;
-      break;
-    case "c":
-      img = doorClosed;
-      break;
-    case "o":
-      img = doorOpen;
-      break;
-    default:
-      img = floor;
+    case ".": img = floor; break;
+    case "w": img = wall; break;
+    case "1": img = floor1; break;
+    case "2": img = floor2; break;
+    case "3": img = floor3; break;
+    case "4": img = floor4; break;
+    case "5": img = floor5; break;
+    case "6": img = floor6; break;
+    case "7": img = floor7; break;
+    case "8": img = floor8; break;
+    case "9": img = floor9; break;
+    case "@": img = floor10; break;
+    case "!": img = floor11; break;
+    case "*": img = space1; break;
+    case "c": img = doorClosed; break;
+    case "o": img = doorOpen; break;
+    default: img = floor;
   }
+  
   map.context.drawImage(img, x, y, cSize, cSize);
 }
 
@@ -94,7 +62,7 @@ function initMap() {
   }
 }
 
-function component(x, y, color) {
+function component(x, y) {
   this.width = cSize;
   this.height = cSize;
   this.x = 0;
@@ -130,7 +98,7 @@ function updateMap(x, y, item) {
 
 function updatePlayerPos(id, x, y) {
   if (players.hasOwnProperty(id) == false) {
-    players[id] = new component(50, 50, "red");
+    players[id] = new component(50, 50);
   }
   player = players[id];
   player.newPos(x * cSize, y * cSize);
