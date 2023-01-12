@@ -1,10 +1,11 @@
-let connSocket = new WebSocket("ws://127.0.0.1:8083");
+let mgrSocket = new WebSocket("ws://127.0.0.1:8083");
+let ID = ""
 
-connSocket.onopen = function (e) {
+mgrSocket.onopen = function (e) {
   //alert("[open] Connection established");
 };
 
-connSocket.onmessage = function (event) {
+mgrSocket.onmessage = function (event) {
   msg = event.data;
   if (msg.includes("MOVE")) {
     console.log(msg);
@@ -16,9 +17,17 @@ connSocket.onmessage = function (event) {
     console.log (item);
     updateMap(item[1], item[2], item[3]);
   }
+  if (msg.includes("ID")) {
+    ID = msg.split(/\s+/)[1];
+    console.log("ID: " + ID);
+  }
+  if (msg.includes("KICK")) {
+    player = msg.split(/\s+/)[1]
+    kick(player);
+  }
 };
 
-connSocket.onclose = function (event) {
+mgrSocket.onclose = function (event) {
   if (event.wasClean) {
     //alert(`[close] Connection closed cleanly, code=${event.code} reason=${event.reason}`);
   } else {
@@ -26,6 +35,6 @@ connSocket.onclose = function (event) {
   }
 };
 
-connSocket.onerror = function (error) {
+mgrSocket.onerror = function (error) {
   //alert(`[error] ${error.message}`);
 };

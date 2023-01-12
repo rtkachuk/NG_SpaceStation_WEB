@@ -8,10 +8,10 @@ def generateResponse(data):
 
 api = Flask("SS_ItemsKeeper")
 
-@api.route('/getItemInfo', methods=['GET'])
+@api.route('/getItemInfo', methods=['POST'])
 def getItemInfo():
     try:
-        id = int(request.args.get('id'))
+        id = int(request.form.get('id'))
         response = generateResponse(json.dumps(itemsList[id]))
     except Exception as exc:
         print (str(exc))

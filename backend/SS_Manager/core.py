@@ -1,6 +1,7 @@
 import asyncio
 import websockets
 from flask import Flask, json, make_response, request
+import utils
 
 from logWorker import configureLogger
 
@@ -41,12 +42,15 @@ async def connSocketHandler(websocket):
     try:
         clients.append(websocket)
         player = websocket.remote_address[0]
+        await websocket.send("ID " + player)
         connSockLog.info("New connection from " + player)
         while True:
-            message = await websocket.recv()  
+            print(utils.parseClientMessage(player, await websocket.recv()))
     except websockets.exceptions.ConnectionClosed:
         connSockLog.error ("Connection dropped")
         clients.remove(websocket)
+        for client in clients:
+            await client.send("KICK " + player)
 
 def sockWorker():
     socketEventLoop = asyncio.new_event_loop()
