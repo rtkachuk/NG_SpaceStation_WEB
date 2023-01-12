@@ -19,6 +19,12 @@ def getItemInfo():
     response.mimetype = "application/json"
     return response
 
+@api.route('/getImagesList', methods=['POST'])
+def getImagesList():
+    imagesList = list(map(lambda x: x["img"], itemsList))
+    return generateResponse(json.dumps(imagesList));
+
+
 def start():
     initItems("configs/items.txt")
     api.run(host="0.0.0.0", port=8085)

@@ -6,6 +6,7 @@ var offsetX = 0;
 var offsetY = 0;
 
 mapData = [];
+images = {};
 
 function start() {
   console.log(mapData);
@@ -28,23 +29,23 @@ var map = {
 function drawTile(id, x, y) {
   img = null;
   switch (id) {
-    case ".": img = floor; break;
-    case "w": img = wall; break;
-    case "1": img = floor1; break;
-    case "2": img = floor2; break;
-    case "3": img = floor3; break;
-    case "4": img = floor4; break;
-    case "5": img = floor5; break;
-    case "6": img = floor6; break;
-    case "7": img = floor7; break;
-    case "8": img = floor8; break;
-    case "9": img = floor9; break;
-    case "@": img = floor10; break;
-    case "!": img = floor11; break;
-    case "*": img = space1; break;
-    case "c": img = doorClosed; break;
-    case "o": img = doorOpen; break;
-    default: img = floor;
+    case ".": img = images["floor"]; break;
+    case "w": img = images["wall"]; break;
+    case "1": img = images["floor1"]; break;
+    case "2": img = images["floor2"]; break;
+    case "3": img = images["floor3"]; break;
+    case "4": img = images["floor4"]; break;
+    case "5": img = images["floor5"]; break;
+    case "6": img = images["floor6"]; break;
+    case "7": img = images["floor7"]; break;
+    case "8": img = images["floor8"]; break;
+    case "9": img = images["floor9"]; break;
+    case "@": img = images["floor10"]; break;
+    case "!": img = images["floor11"]; break;
+    case "*": img = images["space1"]; break;
+    case "c": img = images["door_closed"]; break;
+    case "o": img = images["door_open"]; break;
+    default: img = images["floor"];
   }
   
   map.context.drawImage(img, x, y, cSize, cSize);
@@ -70,7 +71,7 @@ function component(x, y) {
   this.update = function () {
     ctx = map.context;
     ctx.drawImage(
-      playerModel,
+      images["fox_right"],
       this.x + offsetX * cSize,
       this.y + offsetY * cSize,
       cSize,
