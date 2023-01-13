@@ -7,8 +7,8 @@ mgrSocket.onopen = function (e) {
 
 mgrSocket.onmessage = function (event) {
   msg = event.data;
+  console.log(msg);
   if (msg.includes("MOVE")) {
-    console.log(msg);
     pos = msg.split(/\s+/);
     updatePlayerPos(pos[0], pos[2], pos[3]) // ID, x, y
   }
@@ -24,6 +24,16 @@ mgrSocket.onmessage = function (event) {
   if (msg.includes("KICK")) {
     player = msg.split(/\s+/)[1]
     kick(player);
+  }
+  if (msg.includes("PICK")) {
+    item = msg.split(/\s+/);
+    console.log("ITEM TO CLEAR: " + item);
+    pickItem(parseInt(item[1]), parseInt(item[2]), parseInt(item[3]));
+  }
+  if (msg.includes("INV")) {
+    data = msg.split(/\s+/);
+    console.log ("Inventory: " + data);
+    updateInventory(data[1]);
   }
 };
 

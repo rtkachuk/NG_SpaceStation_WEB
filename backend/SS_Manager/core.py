@@ -2,6 +2,7 @@ import asyncio
 import websockets
 from flask import Flask, json, make_response, request
 import utils
+import sys
 
 from logWorker import configureLogger
 
@@ -16,6 +17,12 @@ async def sendToClients(msg):
     for client in clients:
         await client.send( msg )
 
+async def sendToClient(id, msg):
+    for client in clients:
+        if client.remote_address[0] == id:
+            await client.send(msg)
+            return
+
 def generateResponse(data):
     response = make_response(data)
     response.headers['Access-Control-Allow-Origin'] = '*'
@@ -27,6 +34,14 @@ async def getMap():
     response.mimetype = "application/json"
     msg = str(request.args.get('msg')).replace("%20", " ")
     await sendToClients(msg)
+    return response
+
+@api.route('/sendToClient', methods=['POST'])
+async def sendClient():
+    response = generateResponse("OK")
+    id = str(request.form.get('id'))
+    msg = str(request.form.get('msg'))
+    await sendToClient(id, msg)
     return response
 
 def apiWorker():

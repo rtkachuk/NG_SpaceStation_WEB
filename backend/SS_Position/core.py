@@ -2,6 +2,7 @@ import redisWorker
 import mapWorker
 import requests
 import os
+import sys
 from logWorker import configureLogger
 
 coreLog = configureLogger(name="CORE")
@@ -30,3 +31,13 @@ def processMovement(player, key):
     else:
         openable = mapWorker.processOpenable(x,y)
         sendToAll("UPD " + resultPosition + " " + openable)
+
+def getPlayerDirectionPosition(player, direction):
+    x,y = redisWorker.getPlayerPostition(player)
+    match (direction):
+        case "W": y-=1
+        case "S": y+=1
+        case "A": x-=1
+        case "D": x+=1
+    
+    return { "x": x, "y": y }

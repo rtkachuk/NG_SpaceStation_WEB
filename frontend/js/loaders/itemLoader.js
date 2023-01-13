@@ -17,6 +17,27 @@ function loadItems() {
     };
 }
 
+function updateInventory(inventory) {
+    var table = "<tr><td>Инвентарь</td></tr>";
+    inventory.split(",").forEach(function (element) {
+        table += "<tr><td>" + element + "</td></tr>";
+    });
+    document.getElementById('inventory').innerHTML = table;
+}
+
+function pickItem(id, x, y) {
+    quantity = 1;
+    for (index = 0; index < items.length; index++) {
+        item = items[index];
+        if (item.x == x && item.y == y && item.id == id) {
+            items.splice(index, 1);
+            mgrSocket.send("INV"); // Update inventory
+            updateAll();
+            return;
+        }
+    }
+}
+
 function initItemPositions(itemsPositions) {
     console.log(itemsPositions);
     keys = Object.keys(itemsPositions);

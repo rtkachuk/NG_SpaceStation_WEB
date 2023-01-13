@@ -1,5 +1,6 @@
 from flask import Flask, json, make_response, request
 from core import *
+import sys
 
 def generateResponse(data):
     response = make_response(data)
@@ -49,6 +50,16 @@ def getPlaceHolders():
 def getNames():
     names = list(map(lambda x: x["name"], itemsList))
     return generateResponse(json.dumps(names))
+
+@api.route('/getItemIdByPosition', methods=['POST'])
+def getItemIdByPosition():
+    x = int(request.form.get('x'))
+    y = int(request.form.get('y'))
+    try:
+        return generateResponse(positions[str(x) + "," + str(y)].pop())
+    except Exception as e:
+        print(e)
+        return (generateResponse(""))
 
 def start():
     initItems()

@@ -51,22 +51,37 @@ function component(x, y, id, image) {
   this.width = cSize;
   this.height = cSize;
   this.id = id;
-  this.x = x * cSize;
-  this.y = y * cSize;
+  this.x = x;
+  this.y = y;
   this.update = function () {
     ctx = map.context;
     ctx.drawImage(
       image,
-      this.x + offsetX * cSize,
-      this.y + offsetY * cSize,
+      this.x * cSize+ offsetX * cSize,
+      this.y * cSize + offsetY * cSize,
       cSize,
       cSize
     );
   };
+
+  this.clear = function() {
+    ctx = map.context;
+    ctx.clearRect(
+      this.x * cSize+ offsetX * cSize,
+      this.y * cSize + offsetY * cSize,
+      cSize,
+      cSize
+    );
+  }
   this.newPos = function (x, y) {
-    this.x = x * cSize;
-    this.y = y * cSize;
+    this.x = x;
+    this.y = y;
   };
+}
+
+function redrawTile(x, y) {
+  ctx = map.context;
+  ctx.fillRect(x * cSize + offsetX * cSize, y * cSize + offsetY * cSize, cSize, cSize);
 }
 
 function updateAll() {
