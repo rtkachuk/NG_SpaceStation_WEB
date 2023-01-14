@@ -3,6 +3,7 @@ import os
 from pynput.keyboard import Key, Listener, KeyCode, Controller
 from termcolor import colored, cprint
 import time
+import random
 
 keyboard = Controller()
 map = []
@@ -86,7 +87,7 @@ def showMap():
             else:
                 print (map[row][col], end="")
 
-def updateMap(ch):
+def updateMap(ch, spaceMode=False):
     global map
     global pos1x
     global pos1y
@@ -96,7 +97,10 @@ def updateMap(ch):
     for row in range (0, len(map)):
         for col in range(0, len(map[row])):
             if row >= pos1y and row <= pos2y and col >= pos1x and col <= pos2x:
-                map[row][col] = ch
+                if spaceMode:
+                    map[row][col] = random.choice(['*', '#', '$', '%', '^', '&', '(', ')', '[', ']'])
+                else:
+                    map[row][col] = ch
 
 def processArguments():
     parser = argparse.ArgumentParser()
@@ -199,6 +203,8 @@ def on_release(key):
         viewStart = viewStart - 1
     if key == KeyCode(char='e'):
         viewStart = viewStart + 1
+    if key == KeyCode(char='o'):
+        updateMap('*', True)
 
     os.system("clear")
     if itemsView:

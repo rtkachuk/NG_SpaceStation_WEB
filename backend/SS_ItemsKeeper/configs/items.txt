@@ -58,3 +58,12 @@
 57:player:Игрок:nomode:notool:noweapon:0:./images/players/fox_right.png:0:Ты, тут ничего не скажешь
 58:structure:Стена:nomode:notool:noweapon:0:./images/buildings/wall.png:w:То, что ты обычно держишь на дискотеке
 59:environment:Космос1:nomode:notool:noweapon:0:./images/misc/space1.png:*:Открытый космос
+60:environment:Космос2:nomode:notool:noweapon:0:./images/misc/space2.png:#:Открытый космос
+61:environment:Космос3:nomode:notool:noweapon:0:./images/misc/space3.png:$:Открытый космос
+62:environment:Космос4:nomode:notool:noweapon:0:./images/misc/space4.png:%:Открытый космос
+63:environment:Космос5:nomode:notool:noweapon:0:./images/misc/space5.png:^:Открытый космос
+64:environment:Космос6:nomode:notool:noweapon:0:./images/misc/space6.png:&:Открытый космос
+65:environment:Космос7:nomode:notool:noweapon:0:./images/misc/astronaut40.png:(:Открытый космос
+66:environment:Космос8:nomode:notool:noweapon:0:./images/misc/frog40.png:):Открытый космос
+67:environment:Космос9:nomode:notool:noweapon:0:./images/misc/planet40.png:[:Открытый космос
+68:environment:Космос10:nomode:notool:noweapon:0:./images/misc/stars40.png:]:Открытый космос
