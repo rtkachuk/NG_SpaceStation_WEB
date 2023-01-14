@@ -9,6 +9,10 @@ def generateResponse(data):
 
 api = Flask("SS_ItemsKeeper")
 
+@api.route('/getItems', methods=['POST'])
+def getItems():
+    return generateResponse(json.dumps(itemsList))
+
 @api.route('/getItemInfo', methods=['POST'])
 def getItemInfo():
     try:

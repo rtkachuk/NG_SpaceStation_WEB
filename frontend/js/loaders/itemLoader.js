@@ -1,4 +1,6 @@
-function loadItems() {
+itemsList = []
+
+function loadItemPositions() {
     const Http = new XMLHttpRequest();
     Http.responseType = "json";
     const url = "http://127.0.0.1:8085/getPositions";
@@ -17,10 +19,30 @@ function loadItems() {
     };
 }
 
+function loadItemInformation() {
+    const Http = new XMLHttpRequest();
+    Http.responseType = "json";
+    const url = "http://127.0.0.1:8085/getItems";
+    Http.open("POST", url);
+    Http.send();
+  
+    Http.onreadystatechange = function () {
+        if (Http.readyState == XMLHttpRequest.DONE) {
+            itemsList = Http.response;
+            console.log(items);
+            console.log(items[1]['desc']);
+        }
+    };
+    
+    Http.onerror = function () {
+        alert("Ошибка " + Http.response);
+    };
+}
+
 function updateInventory(inventory) {
-    var table = "<tr><td>Инвентарь</td></tr>";
+    var table = "<tr><th colspan=\"3\">Инвентарь</th></tr>";
     inventory.split(",").forEach(function (element) {
-        table += "<tr><td>" + element + "</td></tr>";
+        table += "<tr><td>" + element + "</td><td>" + itemsList[element]['name'] + "</td><td>" + itemsList[element]['desc'] + "</tr>";
     });
     document.getElementById('inventory').innerHTML = table;
 }

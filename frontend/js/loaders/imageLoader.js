@@ -33,7 +33,8 @@ function initImages(imagesData) {
         image["img"] = newImage(image["img"]);
         images[image['id']] = image;
     });
-    loadItems();
+    loadItemPositions();
+    loadItemInformation();
     /*imagesData.forEach(function(imageData) {
         //imageNames += imagePath.split("/").pop().split(".")[0]; // "/items/null.png" -> null.png -> null
        images.push(imageData);
