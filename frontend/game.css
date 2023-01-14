@@ -1,0 +1,52 @@
+.tabs {
+    font-size: 0;
+}
+
+.tabs>input[type="radio"] {
+    display: none;
+}
+
+.tabs>div {
+    display: none;
+    border: 1px solid #e0e0e0;
+    padding: 10px 15px 10px 15px;
+    font-size: 16px;
+}
+
+#tab-btn-1:checked~#content-1 {
+    display: block;
+    min-height: 600px;
+    height: auto !important;
+    height: 600px;
+}
+#tab-btn-2:checked~#content-2 {
+    display: block;
+    min-height: 600px;
+    height: auto !important;
+    height: 600px;
+}
+
+.tabs>label {
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    user-select: none;
+    background-color: #f5f5f5;
+    border: 1px solid #e0e0e0;
+    padding: 2px 8px;
+    font-size: 16px;
+    line-height: 1.5;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out;
+    cursor: pointer;
+    position: relative;
+    top: 1px;
+}
+
+.tabs>label:not(:first-of-type) {
+    border-left: none;
+}
+
+.tabs>input[type="radio"]:checked+label {
+    background-color: #fff;
+    border-bottom: 1px solid #fff;
+}
