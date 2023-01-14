@@ -6,7 +6,7 @@ import time
 
 keyboard = Controller()
 map = []
-positions = []
+positions = {}
 posx = 0
 posy = 0
 
@@ -16,6 +16,7 @@ pos2x = -1
 pos2y = -1
 
 selectionMode = False
+itemsView = False
 
 def loadMap(path):
     global map
@@ -31,8 +32,18 @@ def loadMap(path):
 def loadPositions(path):
     global positions
     with open(path) as f:
-        positions = f.readlines()
+        data = f.readlines()
+        for line in data:
+            id, x, y = line.rstrip().split(":")
+            try:
+                positions[str(x) + ":" + str(y)].append(id)
+            except:
+                positions[str(x) + ":" + str(y)] = [id]
     
+def itemExistsByPos(x, y):
+    global positions
+    return str(x) + ":" + str(y) in positions.keys()
+
 def showMap():
     global map
     global posx
@@ -41,11 +52,14 @@ def showMap():
     global pos1y
     global pos2x
     global pos2y
+    global itemsView
 
     for row in range (0, len(map)):
         for col in range(0, len(map[row])):
             if row == posy and col == posx:
                 cprint("X", 'green', attrs=['blink'], end="")
+            elif itemsView and itemExistsByPos(col, row):
+                cprint("*", "yellow", attrs=['blink'], end="")
             elif row >= pos1y and row <= pos2y and col >= pos1x and col <= pos2x:
                 cprint("X", 'red', attrs=['blink'], end="")
             else:
@@ -96,6 +110,7 @@ def on_release(key):
     global pos2x
     global pos2y
     global selectionMode
+    global itemsView
     global keyboard
 
     if key == Key.up:
@@ -130,6 +145,9 @@ def on_release(key):
         flushInput()
         posx = int(input("X: "))
         posy = int(input("Y: "))
+    if key == KeyCode(char='i'):
+        itemsView = not itemsView
+        print (positions)
 
     os.system("clear")
     showMap()
@@ -141,7 +159,7 @@ def loop(arguments):
         loadMap(getattr(arguments, "load"))
 
     if getattr(arguments, "load_positions"):
-        loadMap(getattr(arguments, "load_positions"))
+        loadPositions(getattr(arguments, "load_positions"))
 
     with Listener(
         #on_press=on_press,
