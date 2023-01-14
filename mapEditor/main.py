@@ -16,7 +16,11 @@ pos2x = -1
 pos2y = -1
 
 selectionMode = False
+itemsShow = False
 itemsView = False
+
+viewRange = 30
+viewStart = 0
 
 def loadMap(path):
     global map
@@ -44,6 +48,17 @@ def itemExistsByPos(x, y):
     global positions
     return str(x) + ":" + str(y) in positions.keys()
 
+def showItems():
+    global posx
+    global posy
+    global positions
+
+    for key in positions.keys():
+        if key == str(posx) + ":" + str(posy):
+            print (positions[key])
+            return
+
+
 def showMap():
     global map
     global posx
@@ -52,13 +67,19 @@ def showMap():
     global pos1y
     global pos2x
     global pos2y
-    global itemsView
+    global itemsShow
+    global viewRange
+    global viewStart
 
     for row in range (0, len(map)):
         for col in range(0, len(map[row])):
+            if row < viewStart:
+                continue
+            if row > viewRange + viewStart:
+                return
             if row == posy and col == posx:
                 cprint("X", 'green', attrs=['blink'], end="")
-            elif itemsView and itemExistsByPos(col, row):
+            elif itemsShow and itemExistsByPos(col, row):
                 cprint("*", "yellow", attrs=['blink'], end="")
             elif row >= pos1y and row <= pos2y and col >= pos1x and col <= pos2x:
                 cprint("X", 'red', attrs=['blink'], end="")
@@ -94,13 +115,34 @@ def flushInput():
         int(input())
     except Exception as e:
         print ("Flushing input...")
+    time.sleep(1)
 
 def save():
     global map
+    global positions
+    # Save map
     with open("map.txt", "w") as f:
         for row in map:
             for item in row:
                 f.write(item)
+    # Save items
+    with open("itemPositions.txt", "w") as f:
+        for key in positions.keys():
+            for item in positions[key]:
+                f.write(item + ":" + key + "\n")
+
+def addItem():
+    global positions
+    global posx
+    global posy
+
+    flushInput()
+    item = input("ItemToAdd? ")
+    try:
+        positions[str(posx) + ":" + str(posy)].append(item)
+    except:
+        positions[str(posx) + ":" + str(posy)] = [item]
+    
 
 def on_release(key):
     global posx
@@ -110,8 +152,10 @@ def on_release(key):
     global pos2x
     global pos2y
     global selectionMode
+    global itemsShow
     global itemsView
     global keyboard
+    global viewStart
 
     if key == Key.up:
         posy = posy-1
@@ -146,13 +190,25 @@ def on_release(key):
         posx = int(input("X: "))
         posy = int(input("Y: "))
     if key == KeyCode(char='i'):
+        itemsShow = not itemsShow
+    if key == KeyCode(char='l'):
         itemsView = not itemsView
-        print (positions)
+    if key == KeyCode(char='a'):
+        addItem()
+    if key == KeyCode(char='q'):
+        viewStart = viewStart - 1
+    if key == KeyCode(char='e'):
+        viewStart = viewStart + 1
 
     os.system("clear")
-    showMap()
+    if itemsView:
+        showItems()
+    else:
+        showMap()
     if selectionMode:
         print ("Selected first point!")
+
+    print ("[" + str(posx) + ":" + str(posy) + "]")
 
 def loop(arguments):
     if getattr(arguments, "load"):
