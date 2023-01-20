@@ -22,6 +22,11 @@ def sendToId(id, message):
     if str(response.status_code) != "200":
         print(message + ": " + str(response.status_code))
 
+def sendToAll(message):
+    response = requests.get(managerUrl + "/send?msg=" + str(message))
+    if str(response.status_code) != "200":
+        print ("Can't send to everybody world update!")
+
 def addItem(id, item, itemPos):
     try:
         inventories[id].append(item)
@@ -29,7 +34,8 @@ def addItem(id, item, itemPos):
         print (e)
         print ("Creating new inventory")
         inventories[id] = [item]
-    sendToId(id, "PICK " + str(item) + " " + str(itemPos['x']) + " " + str(itemPos['y']))
+    getInventory(id)
+    sendToAll("WDEL " + str(item) + " " + str(itemPos['x']) + " " + str(itemPos['y']))
     
 
 def delItem(id, item):

@@ -47,13 +47,11 @@ function updateInventory(inventory) {
     document.getElementById('inventory').innerHTML = table;
 }
 
-function pickItem(id, x, y) {
-    quantity = 1;
+function removeItem(id, x, y) {
     for (index = 0; index < items.length; index++) {
         item = items[index];
         if (item.x == x && item.y == y && item.id == id) {
             items.splice(index, 1);
-            mgrSocket.send("INV"); // Update inventory
             updateAll();
             return;
         }

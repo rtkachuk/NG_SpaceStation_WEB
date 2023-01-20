@@ -25,15 +25,15 @@ mgrSocket.onmessage = function (event) {
     player = msg.split(/\s+/)[1]
     kick(player);
   }
-  if (msg.includes("PICK")) {
-    item = msg.split(/\s+/);
-    console.log("ITEM TO CLEAR: " + item);
-    pickItem(parseInt(item[1]), parseInt(item[2]), parseInt(item[3]));
-  }
   if (msg.includes("INV")) {
     data = msg.split(/\s+/);
     console.log ("Inventory: " + data);
     updateInventory(data[1]);
+  }
+  if (msg.includes("WDEL")) { // Delete item from world
+    data = msg.split(/\s+/);
+    console.log ("Remove item from world: " + data);
+    removeItem(data[1], data[2], data[3]);
   }
 };
 
