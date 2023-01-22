@@ -1,4 +1,4 @@
-let mgrSocket = new WebSocket("ws://127.0.0.1:8083");
+let mgrSocket = new WebSocket(`ws://${serviceAddress}:8083`);
 let ID = ""
 
 mgrSocket.onopen = function (e) {

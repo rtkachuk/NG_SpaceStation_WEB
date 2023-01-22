@@ -4,3 +4,4 @@ docker rmi ng_spacestation_web-ss_itemskeeper
 docker rmi ng_spacestation_web-ss_manager
 docker rmi ng_spacestation_web-ss_position
 docker rmi ng_spacestation_web_ss_inventory
+docker rmi ng_spacestation_web-web
