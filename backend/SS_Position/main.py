@@ -1,30 +1,32 @@
-import asyncio
-import websockets
+from flask import Flask, json, make_response, request
 import core
+import redisWorker
+import sys
 
 from logWorker import configureLogger
 
-posSockLog = configureLogger(name="positionSocket")
-clients = []
+def generateResponse(data):
+    response = make_response(data)
+    response.headers['Access-Control-Allow-Origin'] = '*'
+    return response
 
+api = Flask("SS_Position")
 
-async def positionSocketHandler(websocket):
-    try:
-        clients.append(websocket)
-        player = websocket.remote_address[0]
-        await websocket.send("ID " + player)
-        posSockLog.info("New connection from " + player)
-        while True:
-            message = await websocket.recv()
-            command = core.processMessage(player, message)
-    except websockets.exceptions.ConnectionClosed:
-        posSockLog.error ("Connection dropped")
-        clients.remove(websocket)
-        for client in clients:
-            await client.send("KICK " + player)
+@api.route("/move", methods=["POST"])
+def apiMove():
+    player = request.form.get("player")
+    direction = request.form.get("direction")
+    core.processMovement(player, direction)
+    return generateResponse("OK")
 
-async def main():
-    async with websockets.serve(positionSocketHandler, "0.0.0.0", 8081, logger=posSockLog):
-        await asyncio.Future()
-        
-asyncio.run(main())
+@api.route("/getPlayerDirectionPos", methods=["POST"])
+def apiGetPos():
+    player = request.form.get("player")
+    direction = request.form.get("direction")
+    return generateResponse(json.dumps(core.getPlayerDirectionPosition(player, direction)))
+    
+
+def main():
+    api.run(host="0.0.0.0", port=8081)
+
+main()

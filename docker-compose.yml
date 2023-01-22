@@ -1,4 +1,4 @@
-version: "3.9"  # optional since v1.27.0
+version: "3.9"
 services:
   redis:
     ports:
@@ -7,15 +7,16 @@ services:
 
   web:
     ports:
-     - 127.0.0.1:8080:80
+     - 8080:80
     volumes:
      - ./frontend:/usr/share/nginx/html:ro
+     - ./nginx.conf:/etc/nginx/conf.d/default.conf
     image: nginx
 
   ss_position:
     build: backend/SS_Position/.
     ports:
-      - 127.0.0.1:8081:8081
+      - 8081:8081
     links:
       - redis
       - ss_maploader
@@ -23,4 +24,20 @@ services:
   ss_maploader:
     build: backend/SS_MapLoader/.
     ports:
-      - 127.0.0.1:8082:8082
+      - 8082:8082
+
+  ss_manager:
+    build: backend/SS_Manager/.
+    ports:
+      - 8083:8083
+      - 8084:8084
+  
+  ss_itemskeeper:
+    build: backend/SS_ItemsKeeper/.
+    ports:
+      - 8085:8085
+
+  ss_inventory:
+    build: backend/SS_Inventory/.
+    ports:
+      - 8086:8086

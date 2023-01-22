@@ -2,21 +2,17 @@ import redisWorker
 import mapWorker
 import requests
 import os
+import sys
 from logWorker import configureLogger
 
 coreLog = configureLogger(name="CORE")
+itemsKeeperUrl = os.getenv("ItemsKeeperUrl", default="http://ss_itemskeeper:8085")
+managerUrl = os.getenv("ManagerUrl", default="http://ss_manager:8084")
 
-def sendToAll(command):
-#    message = player + " " if not "UPD" in command else ""
-    response = requests.get(os.getenv("ConnectorUrl", 
-                            default="http://ss_connector:8084/send?msg=" + str(command)))
+def sendToAll(message):
+    response = requests.get(managerUrl + "/send?msg=" + str(message))
     if str(response.status_code) != "200":
         coreLog.error(message + ": " + str(response.status_code))
-
-def processMessage(player, message):
-    if "MOVE" in message:
-        cmd, dir = message.split(" ")
-        processMovement(player, dir)
 
 def processMovement(player, key):
     baseX,baseY = redisWorker.getPlayerPostition(player)
@@ -29,21 +25,27 @@ def processMovement(player, key):
 
     resultPosition = str(x) + " " + str(y)
 
-    closed = checkDoorClosing(baseX,baseY)
-    if closed:
-        #redisWorker.setPlayerPosition(player,x,y)
-        if mapWorker.checkPositionMovable(x,y):
-            redisWorker.setPlayerPosition(player,x,y)
-            sendToAll(" CLOSE " + str(x) + " " + str(y) + " " + 'c' + " " + str(baseX) + " " + str(baseY))
-        else:
-            sendToAll("UPD " + resultPosition + " " + mapWorker.processOpenable(x,y))
-    elif mapWorker.checkPositionMovable(x,y):
+    if mapWorker.checkPositionMovable(x,y):
         redisWorker.setPlayerPosition(player,x,y)
-        sendToAll(" MOVE " + str(x) + " " + str(y))
+        closed = checkDoorClosing(baseX,baseY)
+        if closed:
+            redisWorker.setPlayerPosition(player,x,y)
+            sendToAll(player + " CLOSE " + str(x) + " " + str(y) + " " + 'c' + " " + str(baseX) + " " + str(baseY))
+        else:
+            sendToAll(player + " MOVE " + str(x) + " " + str(y))
     else:
         openable = mapWorker.processOpenable(x,y)
         sendToAll("UPD " + resultPosition + " " + openable)
 
+def getPlayerDirectionPosition(player, direction):
+    x,y = redisWorker.getPlayerPostition(player)
+    match (direction):
+        case "W": y-=1
+        case "S": y+=1
+        case "A": x-=1
+        case "D": x+=1
+    
+    return { "x": x, "y": y }
 
 def checkDoorClosing(x, y):
     door_closed = False

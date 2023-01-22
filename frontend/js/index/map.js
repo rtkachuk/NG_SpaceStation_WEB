@@ -6,6 +6,9 @@ var offsetX = 0;
 var offsetY = 0;
 
 mapData = [];
+imagePlaceholders = {};
+images = {};
+items = [];
 
 function start() {
   console.log(mapData);
@@ -26,59 +29,9 @@ var map = {
 };
 
 function drawTile(id, x, y) {
-  img = null;
-  switch (id) {
-    case ".":
-      img = floor;
-      break;
-    case "w":
-      img = wall;
-      break;
-    case "1":
-      img = floor1;
-      break;
-    case "2":
-      img = floor2;
-      break;
-    case "3":
-      img = floor3;
-      break;
-    case "4":
-      img = floor4;
-      break;
-    case "5":
-      img = floor5;
-      break;
-    case "6":
-      img = floor6;
-      break;
-    case "7":
-      img = floor7;
-      break;
-    case "8":
-      img = floor8;
-      break;
-    case "9":
-      img = floor9;
-      break;
-    case "@":
-      img = floor10;
-      break;
-    case "!":
-      img = floor11;
-      break;
-    case "*":
-      img = space1;
-      break;
-    case "c":
-      img = doorClosed;
-      break;
-    case "o":
-      img = doorOpen;
-      break;
-    default:
-      img = floor;
-  }
+  img = imagePlaceholders[id];
+  if (typeof img == 'undefined')
+    img = imagePlaceholders['.'];
   map.context.drawImage(img, x, y, cSize, cSize);
 }
 
@@ -94,25 +47,41 @@ function initMap() {
   }
 }
 
-function component(x, y, color) {
+function component(x, y, id, image) {
   this.width = cSize;
   this.height = cSize;
-  this.x = 0;
-  this.y = 0;
+  this.id = id;
+  this.x = x;
+  this.y = y;
   this.update = function () {
     ctx = map.context;
     ctx.drawImage(
-      playerModel,
-      this.x + offsetX * cSize,
-      this.y + offsetY * cSize,
+      image,
+      this.x * cSize+ offsetX * cSize,
+      this.y * cSize + offsetY * cSize,
       cSize,
       cSize
     );
   };
+
+  this.clear = function() {
+    ctx = map.context;
+    ctx.clearRect(
+      this.x * cSize+ offsetX * cSize,
+      this.y * cSize + offsetY * cSize,
+      cSize,
+      cSize
+    );
+  }
   this.newPos = function (x, y) {
     this.x = x;
     this.y = y;
   };
+}
+
+function redrawTile(x, y) {
+  ctx = map.context;
+  ctx.fillRect(x * cSize + offsetX * cSize, y * cSize + offsetY * cSize, cSize, cSize);
 }
 
 function updateAll() {
@@ -120,6 +89,9 @@ function updateAll() {
   for (const [key, value] of Object.entries(players)) {
     value.update();
   }
+  items.forEach(function(item) {
+    item.update();
+  });
   map.context.stroke();
 }
 
@@ -130,10 +102,10 @@ function updateMap(x, y, item) {
 
 function updatePlayerPos(id, x, y) {
   if (players.hasOwnProperty(id) == false) {
-    players[id] = new component(50, 50, "red");
+    players[id] = new component(50, 50, 57, images[57]["img"]);
   }
   player = players[id];
-  player.newPos(x * cSize, y * cSize);
+  player.newPos(x, y);
   updateAll();
 }
 
