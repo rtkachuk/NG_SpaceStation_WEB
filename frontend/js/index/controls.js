@@ -8,10 +8,10 @@ document.addEventListener('keydown', (e) => {
         }
     } else {
         switch(e.code) {
-            case "KeyW": mgrSocket.send("MOVE W"), offsetUp(); break;
-            case "KeyS": mgrSocket.send("MOVE S"), offsetDown(); break;
-            case "KeyA": mgrSocket.send("MOVE A"), offsetLeft(); break;
-            case "KeyD": mgrSocket.send("MOVE D"), offsetRight; break;
+            case "KeyW": mgrSocket.send("MOVE W"); break;
+            case "KeyS": mgrSocket.send("MOVE S"); break;
+            case "KeyA": mgrSocket.send("MOVE A"); break;
+            case "KeyD": mgrSocket.send("MOVE D"); break;
         }
     }
 })

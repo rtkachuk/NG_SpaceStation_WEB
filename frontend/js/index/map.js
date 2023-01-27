@@ -113,27 +113,29 @@ function updatePlayerPos(id, x, y) {
 function alignCamera(x,y) {
   offsetY = y;
   offsetX = x;
+  console.log("x:" + offsetX);
+  console.log("y:" + offsetY);
 }
 
-function offsetUp() {
-  offsetY++;
-  updateAll();
-}
+// function offsetUp() {
+//   offsetY++;
+//   updateAll();
+// }
 
-function offsetDown() {
-  offsetY--;
-  updateAll();
-}
+// function offsetDown() {
+//   offsetY--;
+//   updateAll();
+// }
 
-function offsetLeft() {
-  offsetX++;
-  updateAll();
-}
+// function offsetLeft() {
+//   offsetX++;
+//   updateAll();
+// }
 
-function offsetRight() {
-  offsetX--;
-  updateAll();
-}
+// function offsetRight() {
+//   offsetX--;
+//   updateAll();
+// }
 
 function kick(id) {
   delete players[id];
