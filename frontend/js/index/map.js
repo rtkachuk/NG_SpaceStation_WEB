@@ -2,8 +2,8 @@ let cSize = 40;
 
 var players = {};
 
-var offsetX = -30;
-var offsetY = -40;
+var offsetX = 0;
+var offsetY = 0;
 
 mapData = [];
 imagePlaceholders = {};
