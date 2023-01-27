@@ -2,8 +2,8 @@ let cSize = 40;
 
 var players = {};
 
-var offsetX = 0;
-var offsetY = 0;
+var offsetX = -30;
+var offsetY = -40;
 
 mapData = [];
 imagePlaceholders = {};
@@ -106,7 +106,13 @@ function updatePlayerPos(id, x, y) {
   }
   player = players[id];
   player.newPos(x, y);
+  alignCamera((-player.x + 12), (-player.y + 8));
   updateAll();
+}
+
+function alignCamera(x,y) {
+  offsetY = y;
+  offsetX = x;
 }
 
 function offsetUp() {
