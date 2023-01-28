@@ -117,26 +117,6 @@ function alignCamera(x,y) {
   console.log("y:" + offsetY);
 }
 
-// function offsetUp() {
-//   offsetY++;
-//   updateAll();
-// }
-
-// function offsetDown() {
-//   offsetY--;
-//   updateAll();
-// }
-
-// function offsetLeft() {
-//   offsetX++;
-//   updateAll();
-// }
-
-// function offsetRight() {
-//   offsetX--;
-//   updateAll();
-// }
-
 function kick(id) {
   delete players[id];
   updateAll(id);
