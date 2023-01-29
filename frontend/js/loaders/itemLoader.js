@@ -29,8 +29,6 @@ function loadItemInformation() {
     Http.onreadystatechange = function () {
         if (Http.readyState == XMLHttpRequest.DONE) {
             itemsList = Http.response;
-            console.log(items);
-            console.log(items[1]['desc']);
         }
     };
     

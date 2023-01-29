@@ -6,19 +6,42 @@
         <link rel="stylesheet" href="game.css">
     </head>
     <body>
-        <div class="tabs">
-            <input type="radio" name="tab-btn" id="tab-btn-1" value="" checked>
-            <label for="tab-btn-1">Поле</label>
-            <input type="radio" name="tab-btn" id="tab-btn-2" value="">
-            <label for="tab-btn-2">Инвентарь</label>
-            <div id="content-1">
-                <canvas id="myCanvas" width="1024" height="600" style="border:1px solid #d3d3d3;"></canvas>
-            </div>
-            <div id="content-2">
-                <table id="inventory" align="right" border="1" width="100%"></table>
-            </div>
+        <div id="header">
+            <img id="S" src="./images/buttons/S.png">
+            <img id="P" src="./images/buttons/P.png">
+            <img id="A" src="./images/buttons/A.png">
+            <img id="C" src="./images/buttons/C.png">
+            <img id="E" src="./images/buttons/E.png">
+            <img id="DOT" src="./images/buttons/DOT.png">
+            <img id="S2" src="./images/buttons/S.png">
+            <img id="T" src="./images/buttons/T.png">
+            <img id="A2" src="./images/buttons/A.png">
+            <img id="T2" src="./images/buttons/T.png">
+            <img id="I" src="./images/buttons/I.png">
+            <img id="O" src="./images/buttons/O.png">
+            <img id="N" src="./images/buttons/N.png">
+        </div>
+        <div id="main">
+            <canvas id="myCanvas" width="1024" height="600"></canvas>
+        </div>
+        <div id="items">
+            <table id="table">
+                <tr>
+                    <td><img src="./images/items/axe.png"><h2 class="count">1</h2></td>
+                    <td><img src="./images/items/syringe_green.png"><h2 class="count">2</h2></td>
+                    <td><img src="./images/books/book_science.png"><h2 class="count">3</h2></td>
+                    <td><h2 class="count">4</h2></td>
+                    <td><h2 class="count">5</h2></td>
+                    <td><h2 class="count">6</h2></td>
+                    <td><h2 class="count">7</h2></td>
+                    <td><h2 class="count">8</h2></td>
+                    <td><h2 class="count">9</h2></td>
+                    <td><h2 class="count">10</h2></td>
+                </tr>
+            </table>
         </div>
     </body>
+    <script type="text/javascript" src="js/index/index.js"></script>
     <script type="text/javascript" src="js/index/map.js"></script>
     <script type="text/javascript" src="js/index/controls.js"></script>
     <script type="text/javascript" src="js/loaders/imageLoader.js"></script>
