@@ -4,6 +4,7 @@ body {
     background-repeat: no-repeat, no-repeat, no-repeat;
     background-position: right -200px top -300px, left 50px top 300px, bottom 40px right 150px;
     background-size: auto, 300px, 80px;
+    background-color: black;
 }
 
 #main {
@@ -34,7 +35,7 @@ body {
 }
 
 #items table, td {
-    border: 1px solid;
+    border: 1px solid white;
     position: relative;
 }
 
@@ -53,6 +54,7 @@ body {
     margin: 0;
     padding: 0;
     z-index: 10;
+    color: white;
 }
 
 #items table td:hover {
@@ -60,9 +62,14 @@ body {
     cursor: pointer;
 }
 
+#items table td:hover .count {
+    color: black;
+}
+
 #items table td:active {
     background-color: aquamarine;
     cursor: pointer;
 }
 
-/* Buttons styles \/ \/ \/ \/ \/ */
+/* Stars \/ \/ \/ \/ \/ */
+
