@@ -2,13 +2,16 @@ body {
     height: 95vh;
     background: url(./images/Planets/planet03.png), url(./images/Planets/planet05.png), url(./images/Planets/planet02.png);
     background-repeat: no-repeat, no-repeat, no-repeat;
-    background-position: right -200px top -300px, left 50px top 300px, bottom 40px right 150px;
+    background-position: right -200px top -300px, left 0px top 300px, bottom 40px right 150px;
     background-size: auto, 300px, 80px;
     background-color: black;
 }
 
+#header {
+    margin-top: 1px;
+}
+
 #main {
-    align-items: center;
     display: flex;
     justify-content: center;
 }
@@ -17,33 +20,60 @@ body {
     display: inline-block;
     margin: 0 auto;
     background-color: white;
-    margin-bottom: 15px;
-    margin-top: 15px;
+    margin-bottom: 5px;
     box-shadow: 5px 5px 5px 1px rgb(113, 113, 255);
-    border: 5px solid #d3d3d3;
+    /* border: 2px solid #d3d3d3; */
+}
+
+.chat {
+    width: 280px;
+    height: 600px;
+    background-color: white;
+    /* border: 2px solid #1F5481; */
+    box-shadow: 5px 5px 5px 1px rgb(113, 113, 255);
+    position: relative;
+    margin-right: 10px;
+    
+}
+
+.chat_message {
+    height: calc(100% - 100px);
+    overflow-y: auto;
+}
+
+.chat_message h4 {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.enter_message {
+    position: absolute;
+    bottom: 5px;
+    left: 5px;
 }
 
 #items {
     align-items: center;
     display: flex;
     justify-content: center;
+    margin-right: 290px;
 }
 
-#items table td {
+table td {
     width: 50px;
     height: 50px;
 }
 
-#items table, td {
+table, td {
     border: 1px solid white;
     position: relative;
 }
 
-#items table td img{
+table td img{
     z-index: 1;
 }
 
-#items table td h2{
+table h2{
     -moz-user-select: none;
     -khtml-user-select: none;
     -webkit-user-select: none;
@@ -57,16 +87,16 @@ body {
     color: white;
 }
 
-#items table td:hover {
+table td:hover {
     background-color: antiquewhite;
     cursor: pointer;
 }
 
-#items table td:hover .count {
+table td:hover .count {
     color: black;
 }
 
-#items table td:active {
+table td:active {
     background-color: aquamarine;
     cursor: pointer;
 }
