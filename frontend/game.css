@@ -5,6 +5,9 @@ body {
     background-position: right -200px top -300px, left 0px top 300px, bottom 40px right 150px;
     background-size: auto, 300px, 80px;
     background-color: black;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    user-select: none;
 }
 
 #header {
@@ -100,6 +103,3 @@ table td:active {
     background-color: aquamarine;
     cursor: pointer;
 }
-
-/* Stars \/ \/ \/ \/ \/ */
-
