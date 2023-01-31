@@ -113,8 +113,6 @@ function updatePlayerPos(id, x, y) {
 function alignCamera(x,y) {
   offsetY = y;
   offsetX = x;
-  console.log("x:" + offsetX);
-  console.log("y:" + offsetY);
 }
 
 function kick(id) {

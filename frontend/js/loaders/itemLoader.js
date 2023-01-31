@@ -29,8 +29,6 @@ function loadItemInformation() {
     Http.onreadystatechange = function () {
         if (Http.readyState == XMLHttpRequest.DONE) {
             itemsList = Http.response;
-            console.log(items);
-            console.log(items[1]['desc']);
         }
     };
     
@@ -40,11 +38,13 @@ function loadItemInformation() {
 }
 
 function updateInventory(inventory) {
-    var table = "<tr><th colspan=\"3\">Инвентарь</th></tr>";
+    let count = 1;
     inventory.split(",").forEach(function (element) {
-        table += "<tr><td>" + element + "</td><td>" + itemsList[element]['name'] + "</td><td>" + itemsList[element]['desc'] + "</tr>";
+
+        let table = "<td><img src=" + itemsList[element]['img'] + ` title="${itemsList[element]['desc']}" ></td><h2 class="count">${count}</h2>`;
+        document.getElementById('table_' + count).innerHTML = table;
+        count++;
     });
-    document.getElementById('inventory').innerHTML = table;
 }
 
 function removeItem(id, x, y) {
