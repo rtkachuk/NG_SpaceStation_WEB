@@ -18,7 +18,6 @@ def getInventory(options):
     return answer.text
 
 def parseClientMessage(player, message):
-    print("Responce: " + str(message))
     data = message.split(" ")
     cmd = data[0] # Command
     match (cmd):

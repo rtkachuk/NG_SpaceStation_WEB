@@ -106,27 +106,13 @@ function updatePlayerPos(id, x, y) {
   }
   player = players[id];
   player.newPos(x, y);
+  alignCamera((-player.x + 12), (-player.y + 8));
   updateAll();
 }
 
-function offsetUp() {
-  offsetY++;
-  updateAll();
-}
-
-function offsetDown() {
-  offsetY--;
-  updateAll();
-}
-
-function offsetLeft() {
-  offsetX++;
-  updateAll();
-}
-
-function offsetRight() {
-  offsetX--;
-  updateAll();
+function alignCamera(x,y) {
+  offsetY = y;
+  offsetX = x;
 }
 
 function kick(id) {

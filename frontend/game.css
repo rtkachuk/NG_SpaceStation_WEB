@@ -1,52 +1,105 @@
-.tabs {
-    font-size: 0;
-}
-
-.tabs>input[type="radio"] {
-    display: none;
-}
-
-.tabs>div {
-    display: none;
-    border: 1px solid #e0e0e0;
-    padding: 10px 15px 10px 15px;
-    font-size: 16px;
-}
-
-#tab-btn-1:checked~#content-1 {
-    display: block;
-    min-height: 600px;
-    height: auto !important;
-    height: 600px;
-}
-#tab-btn-2:checked~#content-2 {
-    display: block;
-    min-height: 600px;
-    height: auto !important;
-    height: 600px;
-}
-
-.tabs>label {
-    display: inline-block;
-    text-align: center;
-    vertical-align: middle;
+body {
+    height: 95vh;
+    background: url(./images/Planets/planet03.png), url(./images/Planets/planet05.png), url(./images/Planets/planet02.png);
+    background-repeat: no-repeat, no-repeat, no-repeat;
+    background-position: right -200px top -300px, left 0px top 300px, bottom 40px right 150px;
+    background-size: auto, 300px, 80px;
+    background-color: black;
+    -moz-user-select: none;
+    -khtml-user-select: none;
     user-select: none;
-    background-color: #f5f5f5;
-    border: 1px solid #e0e0e0;
-    padding: 2px 8px;
-    font-size: 16px;
-    line-height: 1.5;
-    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out;
-    cursor: pointer;
+}
+
+#header {
+    margin-top: 1px;
+}
+
+#main {
+    display: flex;
+    justify-content: center;
+}
+
+#myCanvas {
+    display: inline-block;
+    margin: 0 auto;
+    background-color: white;
+    margin-bottom: 5px;
+    box-shadow: 5px 5px 5px 1px rgb(113, 113, 255);
+    /* border: 2px solid #d3d3d3; */
+}
+
+.chat {
+    width: 280px;
+    height: 600px;
+    background-color: white;
+    /* border: 2px solid #1F5481; */
+    box-shadow: 5px 5px 5px 1px rgb(113, 113, 255);
     position: relative;
-    top: 1px;
+    margin-right: 10px;
+    
 }
 
-.tabs>label:not(:first-of-type) {
-    border-left: none;
+.chat_message {
+    height: calc(100% - 100px);
+    overflow-y: auto;
 }
 
-.tabs>input[type="radio"]:checked+label {
-    background-color: #fff;
-    border-bottom: 1px solid #fff;
+.chat_message h4 {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.enter_message {
+    position: absolute;
+    bottom: 5px;
+    left: 5px;
+}
+
+#items {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    margin-right: 290px;
+}
+
+table td {
+    width: 50px;
+    height: 50px;
+}
+
+table, td {
+    border: 1px solid white;
+    position: relative;
+}
+
+table td img{
+    z-index: 1;
+}
+
+table h2{
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    margin: 0;
+    padding: 0;
+    z-index: 10;
+    color: white;
+}
+
+table td:hover {
+    background-color: antiquewhite;
+    cursor: pointer;
+}
+
+table td:hover .count {
+    color: black;
+}
+
+table td:active {
+    background-color: aquamarine;
+    cursor: pointer;
 }

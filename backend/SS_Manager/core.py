@@ -58,9 +58,7 @@ async def connSocketHandler(websocket):
         clients.append(websocket)
         player = websocket.remote_address[0]
         await websocket.send("ID " + player)
-        responce = await websocket.recv()
         connSockLog.info("New connection from " + player)
-        connSockLog.info("Responce: " + str(responce))
         while True:
             print(utils.parseClientMessage(player, await websocket.recv()))
     except websockets.exceptions.ConnectionClosed:
@@ -76,4 +74,3 @@ def sockWorker():
     socketEventLoop.run_until_complete(ws_server)
     socketEventLoop.run_forever()
     socketEventLoop.close()
-
