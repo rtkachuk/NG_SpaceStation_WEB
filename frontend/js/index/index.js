@@ -5,7 +5,7 @@ setInterval(function() {
 
     let str = document.getElementById(randomValue).getAttribute('src').substr(-5, 1);
     if (str === str.toUpperCase()) {
-        document.getElementById(randomValue).src='./images/buttons/'+ randomValue.toLowerCase().replace(/[0-9]/g, '') +'.png';
+        document.getElementById(randomValue).src='./images/buttons/'+ randomValue.toLowerCase().replace(/[0-9]/g, '') + randomValue.toLowerCase().replace(/[0-9]/g, '') +'.png';
     } else {
         document.getElementById(randomValue).src='./images/buttons/'+ randomValue.toUpperCase().replace(/[0-9]/g, '') +'.png';
     }
