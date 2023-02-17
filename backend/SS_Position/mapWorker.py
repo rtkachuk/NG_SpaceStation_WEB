@@ -28,4 +28,5 @@ def processOpenable(x, y):
     item = getElement(x ,y)
     match item:
         case 'c': return setElement('o', x, y)
+        case 'o': return setElement('c', x, y)
     return item

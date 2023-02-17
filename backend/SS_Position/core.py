@@ -27,7 +27,12 @@ def processMovement(player, key):
 
     if mapWorker.checkPositionMovable(x,y):
         redisWorker.setPlayerPosition(player,x,y)
-        sendToAll(player + " MOVE " + str(x) + " " + str(y))
+        closed = checkDoorClosing(baseX,baseY)
+        if closed:
+            redisWorker.setPlayerPosition(player,x,y)
+            sendToAll(player + " CLOSE " + str(x) + " " + str(y) + " " + 'c' + " " + str(baseX) + " " + str(baseY))
+        else:
+            sendToAll(player + " MOVE " + str(x) + " " + str(y))
     else:
         openable = mapWorker.processOpenable(x,y)
         sendToAll("UPD " + resultPosition + " " + openable)
@@ -41,3 +46,9 @@ def getPlayerDirectionPosition(player, direction):
         case "D": x+=1
     
     return { "x": x, "y": y }
+
+def checkDoorClosing(x, y):
+    door_closed = False
+    if mapWorker.processOpenable(x,y) == 'c':
+        door_closed = True
+    return door_closed

@@ -1,4 +1,4 @@
-let mgrSocket = new WebSocket("ws://127.0.0.1:8083");
+let mgrSocket = new WebSocket(`ws://${serviceAddress}:8083`);
 let ID = ""
 
 mgrSocket.onopen = function (e) {
@@ -16,6 +16,14 @@ mgrSocket.onmessage = function (event) {
     item = msg.split(/\s+/)
     console.log (item);
     updateMap(item[1], item[2], item[3]);
+  }
+  if (msg.includes("CLOSE")) {
+    console.log(msg);
+    pos = msg.split(/\s+/);
+    updatePlayerPos(pos[0], pos[2], pos[3]) // ID, x, y
+    if (pos[4] != "") {
+      updateMap(pos[5], pos[6], pos[4]);
+    }
   }
   if (msg.includes("ID")) {
     ID = msg.split(/\s+/)[1];

@@ -3,7 +3,7 @@ itemsList = []
 function loadItemPositions() {
     const Http = new XMLHttpRequest();
     Http.responseType = "json";
-    const url = "http://127.0.0.1:8085/getPositions";
+    const url = `http://127.0.0.1:8085/getPositions`;
     Http.open("POST", url);
     Http.send();
   
