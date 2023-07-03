@@ -5,7 +5,7 @@ imagePlaceholders = []
 function loadImages() {
     const Http = new XMLHttpRequest();
     Http.responseType = "json";
-    const url = "http://127.0.0.1:8085/getImages";
+    const url = `http://${extractHost(window.location.href)}:8085/getImages`;
     Http.open("POST", url);
     Http.send();
   

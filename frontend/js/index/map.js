@@ -106,7 +106,9 @@ function updatePlayerPos(id, x, y) {
   }
   player = players[id];
   player.newPos(x, y);
-  alignCamera((-player.x + 12), (-player.y + 8));
+  if (ID && (ID == id)) {
+    alignCamera((-player.x + 12), (-player.y + 8));
+  }
   updateAll();
 }
 

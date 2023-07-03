@@ -1,7 +1,7 @@
 function loadMap() {
   const Http = new XMLHttpRequest();
   Http.responseType = "json";
-  const url = "http://127.0.0.1:8082/map";
+  const url = `http://${extractHost(window.location.href)}:8082/map`;
   Http.open("GET", url);
   Http.send();
 
