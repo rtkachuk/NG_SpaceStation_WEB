@@ -1,42 +1,5 @@
 itemsList = []
 
-function loadItemPositions() {
-    const Http = new XMLHttpRequest();
-    Http.responseType = "json";
-    const url = `http://${extractHost(window.location.href)}:8085/getPositions`;
-    Http.open("POST", url);
-    Http.send();
-  
-    Http.onreadystatechange = function () {
-        if (Http.readyState == XMLHttpRequest.DONE) {
-            itemsPositions = Http.response;
-            initItemPositions(itemsPositions);
-        }
-    };
-    
-    Http.onerror = function () {
-        alert("Ошибка " + Http.response);
-    };
-}
-
-function loadItemInformation() {
-    const Http = new XMLHttpRequest();
-    Http.responseType = "json";
-    const url = `http://${extractHost(window.location.href)}:8085/getItems`;
-    Http.open("POST", url);
-    Http.send();
-  
-    Http.onreadystatechange = function () {
-        if (Http.readyState == XMLHttpRequest.DONE) {
-            itemsList = Http.response;
-        }
-    };
-    
-    Http.onerror = function () {
-        alert("Ошибка " + Http.response);
-    };
-}
-
 function updateInventory(inventory) {
     let count = 1;
     inventory.split(",").forEach(function (element) {

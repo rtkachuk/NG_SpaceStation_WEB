@@ -1,9 +1,11 @@
 let cSize = 40;
 
-var players = {};
+let players = {};
 
-var offsetX = 0;
-var offsetY = 0;
+let offsetX = 0;
+let offsetY = 0;
+
+let gameStage = new Stage();
 
 mapData = [];
 imagePlaceholders = {};
@@ -11,12 +13,12 @@ images = {};
 items = [];
 
 function start() {
-  console.log(mapData);
-  map.start();
+  console.log('Map data', mapData);
+  STAGE_MANAGER.changeStage(gameStage);
 }
 
-var map = {
-  canvas: document.getElementById("myCanvas"),
+let map = {
+  canvas: document.getElementById("canvas_wrapper"),
   start: function () {
     this.context = this.canvas.getContext("2d");
   },
