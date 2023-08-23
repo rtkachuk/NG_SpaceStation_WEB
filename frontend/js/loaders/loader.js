@@ -1,3 +1,8 @@
+tileImages = [];
+mapData = [];
+images = {};
+items = [];
+
 function loadItems() {
     const Http = new XMLHttpRequest();
     Http.responseType = "json";
@@ -90,7 +95,7 @@ function initItems(itemsData) {
     // Iterate through itemsData and add each image to the loader
     itemsData.forEach(function (item) {
         const imageTexture = newImage(item["img"]);
-        imagePlaceholders[item["pholder"]] = imageTexture;
+        tileImages[item["pholder"]] = imageTexture;
         item["img"] = imageTexture;
         images[item['id']] = item;
     });
@@ -99,5 +104,3 @@ function initItems(itemsData) {
     loadItemPositions();
     loadItemInformation();
 }
-
-loadItems();

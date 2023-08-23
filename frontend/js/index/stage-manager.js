@@ -15,7 +15,6 @@ function StageManager(width, height) {
             height: height
         });
 
-        requestAnimationFrame(this.tick.bind(this));
     }
 
     Object.defineProperty(this, 'app', {
@@ -56,14 +55,14 @@ StageManager.prototype.tick = function() {
     if (deltaTime > 100) deltaTime = 100;
     let deltaFrame = deltaTime * 60 / 1000;
   
-    this.update(deltaFrame);
-    requestAnimationFrame(this.tick.bind(this));
-  };
+    STAGE_MANAGER.update(deltaFrame);
+    requestAnimationFrame(STAGE_MANAGER.tick);
+};
   
 StageManager.prototype.update = function(dt) {
     if (this._app.stage && this._app.stage.update) {
-        this._app.stage.position.x = -this._cameraPos.x;
-        this._app.stage.position.y = -this._cameraPos.y;
+        this._app.stage.position.x = this._cameraPos.x;
+        this._app.stage.position.y = this._cameraPos.y;
         this._app.stage.update(dt);
     }
 };
@@ -73,6 +72,8 @@ $(document).ready(() => {
     let canvasWrapper = $('#canvas_wrapper');
     STAGE_MANAGER = new StageManager(canvasWrapper.width(), canvasWrapper.height());
     canvasWrapper.append(STAGE_MANAGER.app.view);
+    loadItems();
+    requestAnimationFrame(STAGE_MANAGER.tick);
 });
 
 $(window).resize(() => {

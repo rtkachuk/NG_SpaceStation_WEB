@@ -1,5 +1,24 @@
 itemsList = []
 
+function Item(x, y, id, image) {
+    this.sprite = new PIXI.Sprite(image);
+    this.width = cSize;
+    this.height = cSize;
+    this.id = id;
+    this.x = x;
+    this.y = y;
+    this.update = () => {
+        this.sprite.position = new PIXI.Point(this.x * cSize, this.y * cSize);
+    };
+    this.clear = function() {
+      this.sprite.parent.removeChild(this.sprite);
+    }
+    this.newPos = function (x, y) {
+      this.x = x;
+      this.y = y;
+    };
+}  
+
 function updateInventory(inventory) {
     let count = 1;
     inventory.split(",").forEach(function (element) {
@@ -24,7 +43,7 @@ function removeItem(id, x, y) {
 function initItemPositions(itemsPositions) {
     console.log(itemsPositions);
     keys = Object.keys(itemsPositions);
-    keys.forEach(function (key) {
+    keys.forEach((key) => {
         pos = key.split(",")
         buffer = itemsPositions[key]
         buffer.forEach(function(item) {
@@ -32,7 +51,7 @@ function initItemPositions(itemsPositions) {
                 try {
                     x = parseInt(pos[0]);
                     y = parseInt(pos[1]);
-                    items.push(new component(x, y, item, images[item]["img"]));
+                    items.push(new Item(x, y, item, images[item]["img"]));
                     items[items.length - 1].newPos(x, y);
                 } catch(error) {
                     console.error(error);
@@ -43,6 +62,4 @@ function initItemPositions(itemsPositions) {
         });
     });
     console.log(items);
-    //itemsPositions.forEach(function (position) {
-    //});
 }
