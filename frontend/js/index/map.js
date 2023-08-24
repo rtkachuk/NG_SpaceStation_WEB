@@ -43,11 +43,12 @@ function updateMap(x, y, item) {
 function updatePlayerPos(id, x, y) {
   if (players.hasOwnProperty(id) == false) {
     players[id] = new Item(50, 50, 57, images[57]["img"]);
+    gameStage.addItem(players[id]);
   }
   player = players[id];
   player.newPos(x, y);
   if (ID && (ID == id)) {
-    alignCamera((-player.x + 12), (-player.y + 8));
+    alignCamera((-player.x + 10), (-player.y + 7));
   }
 }
 
