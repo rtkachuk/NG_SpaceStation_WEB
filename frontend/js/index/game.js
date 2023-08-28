@@ -1,10 +1,3 @@
-let cSize = 40;
-
-let players = {};
-
-let offsetX = 0;
-let offsetY = 0;
-
 let gameStage = new Stage();
 
 function start() {
@@ -38,6 +31,11 @@ function initMap() {
 
 function updateMap(x, y, item) {
   mapData[y][x] = item;
+  drawTile(
+    mapData[y][x],
+    x * cSize,
+    y * cSize
+  );
 }
 
 function updatePlayerPos(id, x, y) {
