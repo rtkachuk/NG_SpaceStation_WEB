@@ -19,12 +19,14 @@ body {
     justify-content: center;
 }
 
-#myCanvas {
+#canvas_wrapper {
     display: inline-block;
     margin: 0 auto;
     background-color: white;
     margin-bottom: 5px;
     box-shadow: 5px 5px 5px 1px rgb(113, 113, 255);
+    width: 800px;
+    height: 600px;
     /* border: 2px solid #d3d3d3; */
 }
 

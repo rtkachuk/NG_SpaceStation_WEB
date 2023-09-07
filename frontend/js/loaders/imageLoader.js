@@ -5,7 +5,7 @@ imagePlaceholders = []
 function loadImages() {
     const Http = new XMLHttpRequest();
     Http.responseType = "json";
-    const url = `http://${serviceAddress}:8085/getImages`;
+    const url = `http://${extractHost(window.location.href)}:8085/getImages`;
     Http.open("POST", url);
     Http.send();
   
@@ -29,7 +29,7 @@ function newImage(src){
 
 function initImages(imagesData) {
     imagesData.forEach(function (image) {
-        imagePlaceholders[image["pholder"]] = newImage(image["img"]);
+        tileImages[image["pholder"]] = newImage(image["img"]);
         image["img"] = newImage(image["img"]);
         images[image['id']] = image;
     });
