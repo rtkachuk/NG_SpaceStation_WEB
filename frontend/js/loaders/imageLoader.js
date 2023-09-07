@@ -29,7 +29,7 @@ function newImage(src){
 
 function initImages(imagesData) {
     imagesData.forEach(function (image) {
-        imagePlaceholders[image["pholder"]] = newImage(image["img"]);
+        tileImages[image["pholder"]] = newImage(image["img"]);
         image["img"] = newImage(image["img"]);
         images[image['id']] = image;
     });

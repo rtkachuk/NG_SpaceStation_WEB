@@ -8,7 +8,7 @@ function loadMap() {
   Http.onreadystatechange = function () {
     if (Http.readyState == XMLHttpRequest.DONE) {
       mapData = Http.response;
-      start();
+      console.debug(mapData);
     }
   };
 

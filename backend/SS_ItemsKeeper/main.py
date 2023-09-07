@@ -32,10 +32,6 @@ def getIdByPlaceHolder():
             return generateResponse(json.dumps(item))
     return generateResponse("NO ITEM")
 
-@api.route('/getImages', methods=['POST'])
-def getImages():
-    return generateResponse(json.dumps(itemsList))
-
 @api.route('/getPositions', methods=['POST'])
 def getPositions():
     return generateResponse(json.dumps(positions))
