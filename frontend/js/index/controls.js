@@ -1,5 +1,6 @@
 document.addEventListener('keydown', (e) => {
-    if (e.ctrlKey) {
+    e.preventDefault();
+    if (e.shiftKey) {
         switch(e.code) {
             case "KeyW": mgrSocket.send("PICK W"); break;
             case "KeyS": mgrSocket.send("PICK S"); break;
@@ -14,4 +15,6 @@ document.addEventListener('keydown', (e) => {
             case "KeyD": mgrSocket.send("MOVE D"); break;
         }
     }
+
+    return false;
 })
